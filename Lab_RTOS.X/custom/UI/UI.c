@@ -97,24 +97,30 @@ void UI_menuTask( void* p_param ) {
                                 
                                 USB_sendS("La fecha y hora actual es:\n");                            
                                 uint16_t voltaje; //voltaje=un número desde 0 a 1023
+                                float grados;
                                 int i;
-                                for (i = 0; i<1 ; i++) {
+                                float total;
+                                int voltajeint;
+                                for (i = 0; i<10; i++) {
                                          
                                     ADC1_ChannelSelect(TempVol);
                                     ADC1_SoftwareTriggerEnable();
                                     
-                                    for (i = 0; i < 1000; i++) {
-                                    }
+                                    vTaskDelay(pdMS_TO_TICKS(250));
 
+                                    
                                     ADC1_SoftwareTriggerDisable();
                                     while (!ADC1_IsConversionComplete(TempVol)) {
-                                        voltaje += ADC1_ConversionResultGet(TempVol);
-                                    }                               
+                                        voltaje = ADC1_ConversionResultGet(TempVol);
+                                    }
+                                    voltajeint=voltaje;
+                                    grados=(32+(voltajeint*0.00977517106));
+                                    total+=grados;  
                                 }
-
-                                float grados=voltaje;//el num decimal es el resultado de dividir 10/1023
+                                total=total/10;
+                                
                                 uint8_t redondeado[16];
-                                sprintf(redondeado,"%.1f\n",grados); //En "redondeado" queda una cadena con el voltaje.
+                                sprintf(redondeado,"%.1f\n",total); //En "redondeado" queda una cadena con el voltaje.
 
                                 USB_sendS(redondeado);
                                // strftime(outBuffer, sizeof (outBuffer) - 1, "%d/%m/%Y - %H:%M:%S\n", &auxTM);
