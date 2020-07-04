@@ -48,7 +48,7 @@ void UI_menuTask( void* p_param ) {
                     USB_sendS("4_ Eliminar evento de calendario\n");
                     USB_sendS("5_ Consultar lista de eventos activos\n");
                     s_state_menuTask = UI_MENU_STATE_WAIT_INPUT;
-                    // Intentionally fall through
+                    // Intentionally fall through.
 
                 case UI_MENU_STATE_WAIT_INPUT:
                     USB_receive(inputBuffer, sizeof (inputBuffer));
@@ -94,26 +94,22 @@ void UI_menuTask( void* p_param ) {
                             // <editor-fold defaultstate="collapsed" desc="Consultar fecha/hora">
                         case '2':
                             if( RTCC_TimeGet(&auxTM) ) {
+                                
+                                USB_sendS("La fecha y hora actual es:\n");                            
                                 uint16_t voltaje; //voltaje=un número desde 0 a 1023
                                 int i;
-                                USB_sendS("La fecha y hora actual es:\n");                            
-                                
                                 for (i = 0; i<1 ; i++) {
-                                    USB_sendS("PASO\n");
-                           
+                                         
                                     ADC1_ChannelSelect(TempVol);
                                     ADC1_SoftwareTriggerEnable();
                                     
                                     for (i = 0; i < 1000; i++) {
                                     }
-                                    USB_sendS("PASO2\n");
+
                                     ADC1_SoftwareTriggerDisable();
                                     while (!ADC1_IsConversionComplete(TempVol)) {
-                                        //delay del freertos
                                         voltaje += ADC1_ConversionResultGet(TempVol);
-                                    }
-
-                               
+                                    }                               
                                 }
 
                                 float grados=voltaje;//el num decimal es el resultado de dividir 10/1023
