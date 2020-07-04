@@ -8,6 +8,8 @@
 
 #include "../../freeRTOS/include/FreeRTOS.h"
 
+#include "../../mcc_generated_files/adc1.h"
+
 #include <stdio.h>
 #include <string.h>
 
@@ -92,9 +94,36 @@ void UI_menuTask( void* p_param ) {
                             // <editor-fold defaultstate="collapsed" desc="Consultar fecha/hora">
                         case '2':
                             if( RTCC_TimeGet(&auxTM) ) {
-                                USB_sendS("La fecha y hora actual es:\n");
-                                strftime(outBuffer, sizeof (outBuffer) - 1, "%d/%m/%Y - %H:%M:%S\n", &auxTM);
-                                USB_sendS(outBuffer);
+                                uint16_t voltaje; //voltaje=un número desde 0 a 1023
+                                int i;
+                                USB_sendS("La fecha y hora actual es:\n");                            
+                                
+                                for (i = 0; i<1 ; i++) {
+                                    USB_sendS("PASO\n");
+                           
+                                    ADC1_ChannelSelect(TempVol);
+                                    ADC1_SoftwareTriggerEnable();
+                                    
+                                    for (i = 0; i < 1000; i++) {
+                                    }
+                                    USB_sendS("PASO2\n");
+                                    ADC1_SoftwareTriggerDisable();
+                                    while (!ADC1_IsConversionComplete(TempVol)) {
+                                        //delay del freertos
+                                        voltaje += ADC1_ConversionResultGet(TempVol);
+                                    }
+
+                               
+                                }
+
+                                float grados=voltaje;//el num decimal es el resultado de dividir 10/1023
+                                uint8_t redondeado[16];
+                                sprintf(redondeado,"%.1f\n",grados); //En "redondeado" queda una cadena con el voltaje.
+
+                                USB_sendS(redondeado);
+                               // strftime(outBuffer, sizeof (outBuffer) - 1, "%d/%m/%Y - %H:%M:%S\n", &auxTM);
+                                //USB_sendS(outBuffer);
+                            
                             }
                             else {
                                 USB_sendS("Error inesperado, información no disponible\n");
