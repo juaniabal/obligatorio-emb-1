@@ -106,8 +106,7 @@ void UI_menuTask( void* p_param ) {
                                     ADC1_ChannelSelect(TempVol);
                                     ADC1_SoftwareTriggerEnable();
                                     
-                                    vTaskDelay(pdMS_TO_TICKS(250));
-
+                                    vTaskDelay(pdMS_TO_TICKS(250));//
                                     
                                     ADC1_SoftwareTriggerDisable();
                                     while (!ADC1_IsConversionComplete(TempVol)) {
