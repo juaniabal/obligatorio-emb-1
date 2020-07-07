@@ -61,7 +61,7 @@ void PIN_MANAGER_Initialize (void)
     /****************************************************************************
      * Setting the Output Latch SFR(s)
      ***************************************************************************/
-    LATA = 0x0000;
+    LATA = 0x0002;
     LATB = 0x0000;
     LATC = 0x0000;
     LATD = 0x0000;
@@ -69,7 +69,7 @@ void PIN_MANAGER_Initialize (void)
     /****************************************************************************
      * Setting the GPIO Direction SFR(s)
      ***************************************************************************/
-    TRISA = 0xFB76;
+    TRISA = 0xFB75;
     TRISB = 0xAFFF;
     TRISC = 0xEFFF;
     TRISD = 0x001F;
