@@ -9,6 +9,8 @@
         <itemPath>custom/Events/events.h</itemPath>
         <itemPath>custom/UI/UI.h</itemPath>
         <itemPath>custom/USB/USB.h</itemPath>
+        <itemPath>custom/SIM808/SIM808.h</itemPath>
+        <itemPath>custom/GPS/GPS.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f1" displayName="freeRTOS" projectFiles="true">
         <itemPath>freeRTOS/include/FreeRTOS.h</itemPath>
@@ -45,6 +47,7 @@
         <itemPath>mcc_generated_files/rtcc.h</itemPath>
         <itemPath>mcc_generated_files/adc1.h</itemPath>
         <itemPath>mcc_generated_files/adc_module_features.h</itemPath>
+        <itemPath>mcc_generated_files/uart1.h</itemPath>
       </logicalFolder>
       <itemPath>FreeRTOSConfig.h</itemPath>
     </logicalFolder>
@@ -60,6 +63,8 @@
         <itemPath>custom/Events/events.c</itemPath>
         <itemPath>custom/UI/UI.c</itemPath>
         <itemPath>custom/USB/USB.c</itemPath>
+        <itemPath>custom/GPS/GPS.c</itemPath>
+        <itemPath>custom/SIM808/SIM808.c</itemPath>
       </logicalFolder>
       <logicalFolder name="f1" displayName="freeRTOS" projectFiles="true">
         <itemPath>freeRTOS/croutine.c</itemPath>
@@ -89,6 +94,7 @@
         <itemPath>mcc_generated_files/pin_manager.c</itemPath>
         <itemPath>mcc_generated_files/rtcc.c</itemPath>
         <itemPath>mcc_generated_files/adc1.c</itemPath>
+        <itemPath>mcc_generated_files/uart1.c</itemPath>
       </logicalFolder>
       <itemPath>main.c</itemPath>
     </logicalFolder>
@@ -333,6 +339,8 @@
                   value="${memories.instruction.ram.ranges}"/>
         <property key="memories.programmemory" value="true"/>
         <property key="memories.programmemory.ranges" value="1d000000-1d03ffff"/>
+        <property key="programmerToGoFilePath"
+                  value="C:/Users/rafag/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/debug/default/Lab_RTOS_ptg"/>
         <property key="programoptions.donoteraseauxmem" value="false"/>
         <property key="programoptions.eraseb4program" value="true"/>
         <property key="programoptions.pgmentry.voltage" value="low"/>
