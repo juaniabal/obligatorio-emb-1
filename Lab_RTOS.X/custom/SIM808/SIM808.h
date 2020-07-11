@@ -98,7 +98,7 @@
 /************************* GLOBAL VARIABLES *************************************/
 /*******************************************************************************/
 extern TaskHandle_t modemInitHandle;
-
+//a
 extern SemaphoreHandle_t c_semGPSIsReady;
 extern SemaphoreHandle_t c_semGSMIsReady;
 
