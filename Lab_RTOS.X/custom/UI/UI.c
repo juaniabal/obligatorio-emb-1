@@ -9,6 +9,7 @@
 #include "../../freeRTOS/include/FreeRTOS.h"
 
 #include "../../mcc_generated_files/adc1.h"
+#include "../Medtemp/temperatura.h"
 
 #include <stdio.h>
 #include <string.h>
@@ -96,32 +97,7 @@ void UI_menuTask( void* p_param ) {
                             if( RTCC_TimeGet(&auxTM) ) {
                                 
                                 USB_sendS("La fecha y hora actual es:\n");                            
-                                uint16_t voltaje; //voltaje=un número desde 0 a 1023
-                                float grados;
-                                int i;
-                                float total;
-                                int voltajeint;
-                                for (i = 0; i<10; i++) {
-                                         
-                                    ADC1_ChannelSelect(TempVol);
-                                    ADC1_SoftwareTriggerEnable();
-                                    
-                                    vTaskDelay(pdMS_TO_TICKS(250));//
-                                    
-                                    ADC1_SoftwareTriggerDisable();
-                                    while (!ADC1_IsConversionComplete(TempVol)) {
-                                        voltaje = ADC1_ConversionResultGet(TempVol);
-                                    }
-                                    voltajeint=voltaje;
-                                    grados=(32+(voltajeint*0.00977517106));
-                                    total+=grados;  
-                                }
-                                total=total/10;
-                                
-                                uint8_t redondeado[16];
-                                sprintf(redondeado,"%.1f\n",total); //En "redondeado" queda una cadena con el voltaje.
-
-                                USB_sendS(redondeado);
+                                medirtemperatura();
                                // strftime(outBuffer, sizeof (outBuffer) - 1, "%d/%m/%Y - %H:%M:%S\n", &auxTM);
                                 //USB_sendS(outBuffer);
                             

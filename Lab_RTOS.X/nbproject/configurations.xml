@@ -11,6 +11,7 @@
         <itemPath>custom/USB/USB.h</itemPath>
         <itemPath>custom/SIM808/SIM808.h</itemPath>
         <itemPath>custom/GPS/GPS.h</itemPath>
+        <itemPath>custom/Medtemp/temperatura.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f1" displayName="freeRTOS" projectFiles="true">
         <itemPath>freeRTOS/include/FreeRTOS.h</itemPath>
@@ -97,6 +98,7 @@
         <itemPath>mcc_generated_files/uart1.c</itemPath>
       </logicalFolder>
       <itemPath>main.c</itemPath>
+      <itemPath>custom/Medtemp/temperatura.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
