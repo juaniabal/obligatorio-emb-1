@@ -15,9 +15,8 @@
  */
 /* ************************************************************************** */
 
-#ifndef buttons    /* Guard against multiple inclusion */
-#define buttons
-
+#ifndef funcionesDeBotones   /* Guard against multiple inclusion */
+#define funcionesDeBotones
 
 /* ************************************************************************** */
 /* ************************************************************************** */
@@ -25,14 +24,23 @@
 /* ************************************************************************** */
 /* ************************************************************************** */
 
-/* This section lists the other files that are included in this file.
- */
 
-/* TODO:  Include other files here if needed. */
+#include <stdbool.h>
 
+    // *****************************************************************************
+    // *****************************************************************************
+    // Section: Interface Functions
+    // *****************************************************************************
+    // *****************************************************************************
 
+    void setTrueButton1();
+    void resetButton1();
+    bool getButton1(); 
+    void setTrueButton2();
+    void resetButton2();
+    bool getButton2();
 
-#endif /* _EXAMPLE_FILE_NAME_H */
+#endif /* funcionesDeBotones */
 
 /* *****************************************************************************
  End of File

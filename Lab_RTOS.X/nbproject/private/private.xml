@@ -3,8 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/marti/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/main.c</file>
-            <file>file:/C:/Users/marti/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/custom/UI/UI.c</file>
+            <file>file:/C:/Users/rafag/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/main.c</file>
+            <file>file:/C:/Users/rafag/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/custom/buttons/buttons.c</file>
+            <file>file:/C:/Users/rafag/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/mcc_generated_files/system.c</file>
+            <file>file:/C:/Users/rafag/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/freeRTOS/include/FreeRTOS.h</file>
+            <file>file:/C:/Users/rafag/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/mcc_generated_files/pin_manager.c</file>
+            <file>file:/C:/Users/rafag/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/custom/buttons/buttons.h</file>
         </group>
     </open-files>
 </project-private>

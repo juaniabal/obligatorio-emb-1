@@ -1,21 +1,4 @@
 /* ************************************************************************** */
-/** Descriptive File Name
-
-  @Company
-    Company Name
-
-  @File Name
-    filename.c
-
-  @Summary
-    Brief description of the file.
-
-  @Description
-    Describe the purpose of this file.
- */
-/* ************************************************************************** */
-
-/* ************************************************************************** */
 /* ************************************************************************** */
 /* Section: Included Files                                                    */
 /* ************************************************************************** */
@@ -24,7 +7,10 @@
 /* This section lists the other files that are included in this file.
  */
 
-/* TODO:  Include other files here if needed. */
+#include "buttons.h"
+#include <stdbool.h>
+#include "../../mcc_generated_files/pin_manager.h"
+
 
 
 /* ************************************************************************** */
@@ -32,25 +18,34 @@
 /* Section: File Scope or Global Data                                         */
 /* ************************************************************************** */
 /* ************************************************************************** */
-
-/*  A brief description of a section can be given directly below the section
-    banner.
- */
+    bool flag1 = false; 
+    bool flag2 = false;
 
 /* ************************************************************************** */
-/** Descriptive Data Item Name
+/* ************************************************************************** */
+// Section: Interface Functions                                               */
+/* ************************************************************************** */
+/* ************************************************************************** */
 
-  @Summary
-    Brief one-line summary of the data item.
-    
-  @Description
-    Full description, explaining the purpose and usage of data item.
-    <p>
-    Additional description in consecutive paragraphs separated by HTML 
-    paragraph breaks, as necessary.
-    <p>
-    Type "JavaDoc" in the "How Do I?" IDE toolbar for more information on tags.
-    
-  @Remarks
-    Any additional remarks
+    void setTrueButton1(){
+        flag1=true;
+    }
+    void resetButton1(){
+        flag1=false;
+    }
+    bool getButton1(){
+        return flag1;
+    }
+    void setTrueButton2(){
+        flag2=true;
+    }
+    void resetButton2(){
+        flag2=false;
+    }
+    bool getButton2(){
+        return flag2;
+    }
+
+/* *****************************************************************************
+ End of File
  */

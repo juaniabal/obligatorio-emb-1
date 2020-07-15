@@ -56,7 +56,12 @@
 #include "custom/UI/UI.h"
 #include "custom/USB/USB.h"
 #include "custom/Events/events.h"
+#include "custom/buttons/buttons.h"
+#include "custom/buttons/buttons.h"
 #include <string.h>
+
+
+void BTN_taskCheck(void *p_param);
 
 void blinkLED( void *p_param );
 
@@ -68,8 +73,11 @@ int main( void ) {
     SYSTEM_Initialize();
 
     USB_initialize();
+    BTN1_SetInterruptHandler(&setTrueButton1);
 
     /* Create the tasks defined within this file. */
+    xTaskCreate(BTN_taskCheck,"BTN TURN ON",configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY + 3, NULL);
+
     xTaskCreate(USB_taskCheck, "checkUSB", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY + 1, NULL);
     xTaskCreate(EVE_eventsTask, "checkEvents", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY + 1, NULL);
     xTaskCreate(UI_menuTask, "mainMenu", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY + 2, NULL);
@@ -92,6 +100,17 @@ void blinkLED( void *p_param ) {
         vTaskDelay(pdMS_TO_TICKS(400));
         LEDA_SetLow();
         vTaskDelay(pdMS_TO_TICKS(800));
+    }
+}
+void BTN_taskCheck(void *p_param){
+    while(1){
+        vTaskDelay(pdMS_TO_TICKS(400));
+
+        if (getButton1()) { 
+            medirtemperatura();
+            resetButton1();
+
+        }
     }
 }
 
