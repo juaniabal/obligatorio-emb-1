@@ -69,6 +69,7 @@
         <itemPath>custom/SIM808/SIM808.c</itemPath>
         <itemPath>custom/Medtemp/temperatura.c</itemPath>
         <itemPath>custom/buttons/buttons.c</itemPath>
+        <itemPath>custom/Logs/logs.c</itemPath>
       </logicalFolder>
       <logicalFolder name="f1" displayName="freeRTOS" projectFiles="true">
         <itemPath>freeRTOS/croutine.c</itemPath>
@@ -108,6 +109,7 @@
       <itemPath>Makefile</itemPath>
       <itemPath>MyConfig.mc3</itemPath>
     </logicalFolder>
+    <itemPath>custom/Logs/logs.h</itemPath>
   </logicalFolder>
   <sourceRootList>
     <Elem>.</Elem>
