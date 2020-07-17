@@ -6,6 +6,7 @@
 #include "../../mcc_generated_files/adc1.h"
 
 
+
 void WriteLogs(){//PROTEGER CON SEMAFORO?
     uint8_t i = 0;
     char logWriter[45];

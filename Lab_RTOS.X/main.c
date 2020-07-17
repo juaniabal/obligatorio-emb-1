@@ -55,11 +55,9 @@
 
 #include "custom/UI/UI.h"
 #include "custom/USB/USB.h"
-#include "custom/Events/events.h"
-#include "custom/buttons/buttons.h"
 #include "custom/buttons/buttons.h"
 #include <string.h>
-
+#include "custom/SIM808/SIM808.h"
 
 void BTN_taskCheck(void *p_param);
 
@@ -79,9 +77,10 @@ int main( void ) {
     xTaskCreate(BTN_taskCheck,"BTN TURN ON",configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY + 3, NULL);
 
     xTaskCreate(USB_taskCheck, "checkUSB", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY + 1, NULL);
-    xTaskCreate(EVE_eventsTask, "checkEvents", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY + 1, NULL);
     xTaskCreate(UI_menuTask, "mainMenu", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY + 2, NULL);
     xTaskCreate(blinkLED, "Heartbeat", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY + 3, NULL);
+    xTaskCreate( SIM808_taskCheck, "modemTask", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY+1, NULL );
+    xTaskCreate( SIM808_initModule, "modemIni", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY+2, &modemInitHandle );
 
     /* Finally start the scheduler. */
     vTaskStartScheduler();

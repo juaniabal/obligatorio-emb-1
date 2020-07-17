@@ -1,15 +1,13 @@
 // <editor-fold defaultstate="collapsed" desc="Include Files">
 
 #include "UI.h"
-#include "../Events/events.h"
 #include "../LEDsRGB/WS2812.h"
 
 #include "../../mcc_generated_files/rtcc.h"
 
 #include "../../freeRTOS/include/FreeRTOS.h"
-
 #include "../../mcc_generated_files/adc1.h"
-#include "../Medtemp/temperatura.h"
+#include "../Logs/logs.h"
 
 #include <stdio.h>
 #include <string.h>
@@ -28,278 +26,176 @@
 
 // <editor-fold defaultstate="collapsed" desc="Interface Functions">
 
-void UI_menuTask( void* p_param ) {
+void UI_menuTask( void* p_param) { //preguntar como hacer para que log.idregistro = id;
     UI_MENU_STATES s_state_menuTask = UI_MENU_STATE_MAIN;
-    uint8_t outBuffer[50];
     uint8_t inputBuffer[50];
     struct tm auxTM;
-    struct tm* auxTMptr;
-    uint16_t auxInt;
     bool dataValid;
-    eve_event_t auxEvent;
-
+    uint8_t id[10];
+    uint8_t phone[50];
+    uint8_t umbral[50];
+    logger log;
+    uint8_t i = 0; 
+    //char logWriter[45];
+    //char idRegistroLog[5];
+    
     while( 1 ) {
         if( USB_isConnected() ) {
             switch( s_state_menuTask ) {
                 case UI_MENU_STATE_MAIN:
                     USB_sendS("\nMENU PRINCIPAL\n");
-                    USB_sendS("1_ Setear fecha/hora\n");
-                    USB_sendS("2_ Consultar fecha/hora\n");
-                    USB_sendS("3_ Agregar evento de calendario\n");
-                    USB_sendS("4_ Eliminar evento de calendario\n");
-                    USB_sendS("5_ Consultar lista de eventos activos\n");
+                    USB_sendS("1_ Setear ID\n");
+                    USB_sendS("2_ Consultar ID\n");
+                    USB_sendS("3_ Setear Umbral\n");
+                    USB_sendS("4_ Consultar umbral\n");
+                    USB_sendS("5_ Registrar telefono\n");
+                    USB_sendS("6_ Cambiar telefono\n");
+                    USB_sendS("7_ Imprimir logs\n");
                     s_state_menuTask = UI_MENU_STATE_WAIT_INPUT;
-                    // Intentionally fall through.
+                    
+                    // Intentionally fall through
 
                 case UI_MENU_STATE_WAIT_INPUT:
                     USB_receive(inputBuffer, sizeof (inputBuffer));
+
                     USB_sendS("\n");
                     switch( inputBuffer[0] ) {
-                            // <editor-fold defaultstate="collapsed" desc="Setear fecha/hora">
+                      
                         case '1':
                             if( RTCC_TimeGet(&auxTM) ) {
                                 do {
-                                    USB_sendS("Ingrese la fecha (formato DD/MM/AAAA): ");
-                                    USB_receive(inputBuffer, sizeof (inputBuffer));
-                                    sscanf(inputBuffer, "%d/%d/%d", &(auxTM.tm_mday), &(auxTM.tm_mon), &auxInt);
-                                    dataValid = true;
-                                    dataValid = dataValid && ((1 <= auxTM.tm_mday) && (auxTM.tm_mday <= 31));
-                                    dataValid = dataValid && ((1 <= auxTM.tm_mon) && (auxTM.tm_mon <= 12));
-                                    dataValid = dataValid && (1900 <= auxInt);
-                                    auxTM.tm_year = auxInt - 1900;
-                                    auxTM.tm_mon--;
+                                    USB_sendS("Ingrese ID: ");
+                                    USB_receive(id,sizeof(id));
+                                    
+                                    //sprintf(idRegistroLog, "%d", id);
+                                    
 
+                                    /*if(logPosition<=LOGS){
+                                        logsEvents[logPosition] = log; 
+                                        logPosition++;
+                                    }*/
+
+                                    //log.temp = 37.0;
+                                    
+                                    
                                     USB_sendS("\n");
-                                }while( !dataValid );
-
-                                do {
-                                    USB_sendS("Ingrese la hora (formato HH:MM:SS - 24hs): ");
-                                    USB_receive(inputBuffer, sizeof (inputBuffer));
-                                    sscanf(inputBuffer, "%d:%d:%d", &(auxTM.tm_hour), &(auxTM.tm_min), &(auxTM.tm_sec));
                                     dataValid = true;
-                                    dataValid = dataValid && ((0 <= auxTM.tm_hour) && (auxTM.tm_hour <= 24));
-                                    dataValid = dataValid && ((0 <= auxTM.tm_min) && (auxTM.tm_min <= 59));
-                                    dataValid = dataValid && ((0 <= auxTM.tm_sec) && (auxTM.tm_sec <= 59));
-
-                                    USB_sendS("\n");
+                                    log.temp = atof(id);
+                                    
+                                    AddLog(log);
                                 }while( !dataValid );
 
                                 RTCC_TimeSet(&auxTM);
-                                USB_sendS("Fecha/hora configurada exitosamente\n");
+                                                                
+                                
+                                //
+                                    
+                                //AddLog(log);
+                                USB_sendS("ID configurado exitosamente\n");
                             }
                             else {
-                                USB_sendS("Error inesperado, acción no disponible\n");
+                                USB_sendS("Error, intente nuevamente\n");
                             }
                             break;
                             // </editor-fold>
-                            // <editor-fold defaultstate="collapsed" desc="Consultar fecha/hora">
+                           
                         case '2':
                             if( RTCC_TimeGet(&auxTM) ) {
+                                USB_sendS("ID es:\n");
                                 
-                                USB_sendS("La fecha y hora actual es:\n");                            
-                                medirtemperatura();
-                               // strftime(outBuffer, sizeof (outBuffer) - 1, "%d/%m/%Y - %H:%M:%S\n", &auxTM);
-                                //USB_sendS(outBuffer);
-                            
+                                USB_sendS(id);
                             }
                             else {
-                                USB_sendS("Error inesperado, información no disponible\n");
+                                USB_sendS("Error, intente nuevamente\n");
                             }
                             break;
-                            // </editor-fold>
-
-                            // <editor-fold defaultstate="collapsed" desc="Agregar evento de calendario">
                         case '3':
-                            if( EVE_areAnyAvailable() ) {
-                                // <editor-fold defaultstate="collapsed" desc="Elegir acción">
+                            if( RTCC_TimeGet(&auxTM) ) {
                                 do {
-                                    USB_sendS("¿Que acción desea realizar?\n");
-                                    USB_sendS("1_ Encender LED\n");
-                                    USB_sendS("2_ Apagar LED LED\n");
-                                    USB_receive(inputBuffer, sizeof (inputBuffer));
-                                    switch( inputBuffer[0] ) {
-                                        case '1':
-                                            auxEvent.command = EVE_COMMAND_ON;
-                                            dataValid = true;
-                                            break;
-                                        case '2':
-                                            auxEvent.command = EVE_COMMAND_OFF;
-                                            dataValid = true;
-                                            break;
-                                        default:
-                                            USB_sendS("Opción no válida\n");
-                                            dataValid = false;
-                                            break;
-                                    }
-                                }while( !dataValid );
-                                USB_sendS("\n");
-                                // </editor-fold>
-                                // <editor-fold defaultstate="collapsed" desc="Elegir LED">
-                                do {
-                                    USB_sendS("¿Que LED desea ");
-                                    USB_sendS((auxEvent.command == EVE_COMMAND_ON) ? ("encender") : ("apagar"));
-                                    USB_sendS(" (del 0 al 7)?\n");
-                                    USB_receive(inputBuffer, sizeof (inputBuffer));
-
-                                    if( ('0' <= inputBuffer[0]) && (inputBuffer[0] <= '7') ) {
-                                        auxEvent.param = inputBuffer[0] - '0';
-                                    }
-                                    else {
-                                        dataValid = false;
-                                    }
+                                    USB_sendS("Nuevo umbral:");
+                                    USB_receive(umbral,sizeof(umbral));
                                     USB_sendS("\n");
-                                }while( !dataValid );
-                                // </editor-fold>
-
-                                if( auxEvent.command == EVE_COMMAND_ON ) {
-                                    // <editor-fold defaultstate="collapsed" desc="Elegir color">
-                                    do {
-                                        USB_sendS("¿De que color desea que encienda el LED?\n");
-                                        USB_sendS("1_ Blanco\n");
-                                        USB_sendS("2_ Rojo\n");
-                                        USB_sendS("3_ Azul\n");
-                                        USB_sendS("4_ Verde\n");
-
-                                        dataValid = true;
-                                        USB_receive(inputBuffer, sizeof (inputBuffer));
-                                        switch( inputBuffer[0] ) {
-                                            case '1':
-                                                auxEvent.color = WS2812_STD_COLOR_WHITE;
-                                                break;
-                                            case '2':
-                                                auxEvent.color = WS2812_STD_COLOR_RED;
-                                                break;
-                                            case '3':
-                                                auxEvent.color = WS2812_STD_COLOR_BLUE;
-                                                break;
-                                            case '4':
-                                                auxEvent.color = WS2812_STD_COLOR_GREEN;
-                                                break;
-                                            default:
-                                                USB_sendS("Opción no válida\n");
-                                                dataValid = false;
-                                                break;
-                                        }
-                                        USB_sendS("\n");
-                                    }while( !dataValid );
-                                    // </editor-fold>
-                                }
-
-                                // <editor-fold defaultstate="collapsed" desc="Ingresar fecha/hora">
-                                do {
-                                    USB_sendS("Ingrese la fecha (formato DD/MM/AAAA): ");
-                                    USB_receive(inputBuffer, sizeof (inputBuffer));
-                                    sscanf(inputBuffer, "%d/%d/%d", &(auxTM.tm_mday), &(auxTM.tm_mon), &auxInt);
                                     dataValid = true;
-                                    dataValid = dataValid && ((1 <= auxTM.tm_mday) && (auxTM.tm_mday <= 31));
-                                    dataValid = dataValid && ((1 <= auxTM.tm_mon) && (auxTM.tm_mon <= 12));
-                                    dataValid = dataValid && (1900 <= auxInt);
-                                    auxTM.tm_year = auxInt - 1900;
-                                    auxTM.tm_mon--;
-
-                                    USB_sendS("\n");
                                 }while( !dataValid );
 
-                                do {
-                                    USB_sendS("Ingrese la hora (formato HH:MM:SS - 24hs): ");
-                                    USB_receive(inputBuffer, sizeof (inputBuffer));
-                                    sscanf(inputBuffer, "%d:%d:%d", &(auxTM.tm_hour), &(auxTM.tm_min), &(auxTM.tm_sec));
-                                    dataValid = true;
-                                    dataValid = dataValid && ((0 <= auxTM.tm_hour) && (auxTM.tm_hour <= 24));
-                                    dataValid = dataValid && ((0 <= auxTM.tm_min) && (auxTM.tm_min <= 59));
-                                    dataValid = dataValid && ((0 <= auxTM.tm_sec) && (auxTM.tm_sec <= 59));
-
-                                    USB_sendS("\n");
-                                }while( !dataValid );
-                                // </editor-fold>
-
-                                EVE_addEvent(auxEvent.command, auxEvent.param, auxEvent.color, auxTM);
-
-                                USB_sendS("Evento configurado exitosamente\n");
+                                
+                                RTCC_TimeSet(&auxTM);
+                                USB_sendS("Umbral configurado exitosamente\n");
                             }
                             else {
-                                USB_sendS("No se pueden agregar más eventos\n");
+                                USB_sendS("Error, intente nuevamente\n");
                             }
                             break;
-                            // </editor-fold>
-                            // <editor-fold defaultstate="collapsed" desc="Eliminar evento de calendario">
+                          
                         case '4':
-                            do {
-                                USB_sendS("¿Que evento desea eliminar?\n");
-                                USB_sendS("(Números entre el 1 y ");
-                                memset(outBuffer, 0, sizeof (outBuffer));
-                                sprintf(outBuffer, "%u)\n", EVE_EVENT_QTY);
-                                USB_sendS(outBuffer);
-
-                                USB_receive(inputBuffer, sizeof (inputBuffer));
-                                USB_sendS("\n");
-                                auxInt = atoi(inputBuffer);
-                                if( (auxInt == 0) || (auxInt > EVE_EVENT_QTY) ) {
-                                    dataValid = false;
-                                    USB_sendS("Entrada no válida\n");
-                                }
-                                else {
-                                    dataValid = true;
-                                    if( EVE_deleteEvent(auxInt - 1) ) {
-                                        USB_sendS("Evento eliminado correctamente\n");
-                                    }
-                                    else {
-                                        USB_sendS("El evento seleccionado ya había sido eliminado\n");
-                                    }
-                                }
-                            }while( !dataValid );
+                            if( RTCC_TimeGet(&auxTM) ) {
+                                USB_sendS("Consultar umbral:\n");
+                                
+                                USB_sendS(umbral);
+                            }
+                            else {
+                                USB_sendS("Error, intente nuevamente\n");
+                            }
                             break;
-                            // </editor-fold>
-                            // <editor-fold defaultstate="collapsed" desc="Consultar lista de eventos activos">
                         case '5':
-                            dataValid = false;
-                            for( auxInt = 0; auxInt < EVE_EVENT_QTY; auxInt++ ) {
-                                if( EVE_getActiveEvent(auxInt, &auxEvent) ) {
+                            if( RTCC_TimeGet(&auxTM) ) {
+                                do {
+                                    USB_sendS("Ingrese Telefono registrado: ");
+                                    USB_receive(phone,sizeof(phone));
+                                    USB_sendS("\n");
                                     dataValid = true;
-                                    memset(outBuffer, 0, sizeof (outBuffer));
-                                    sprintf(outBuffer, "%u_ ", auxInt + 1);
-                                    USB_sendS(outBuffer);
+                                }while( !dataValid );
 
-                                    memset(outBuffer, 0, sizeof (outBuffer));
-                                    if( auxEvent.command == EVE_COMMAND_OFF ) {
-                                        sprintf(outBuffer, "Apagar LED %u", auxEvent.param);
-                                        USB_sendS(outBuffer);
-                                    }
-                                    else {
-                                        sprintf(outBuffer, "Encender LED %u color ", auxEvent.param);
-                                        USB_sendS(outBuffer);
-                                        switch( auxEvent.color ) {
-                                            case WS2812_STD_COLOR_WHITE:
-                                                USB_sendS("blanco");
-                                                break;
-                                            case WS2812_STD_COLOR_RED:
-                                                USB_sendS("rojo");
-                                                break;
-                                            case WS2812_STD_COLOR_BLUE:
-                                                USB_sendS("azul");
-                                                break;
-                                            case WS2812_STD_COLOR_GREEN:
-                                                USB_sendS("verde");
-                                                break;
-                                        }
-                                    }
-                                    auxTMptr = gmtime(&(auxEvent.time));
-                                    memset(outBuffer, 0, sizeof (outBuffer));
-                                    strftime(outBuffer, sizeof (outBuffer) - 1, " el %d/%m/%Y a las %H:%M:%S\n", auxTMptr);
-                                    USB_sendS(outBuffer);
+                                
+                                RTCC_TimeSet(&auxTM);
+                                USB_sendS("Telefono configurado exitosamente\n");
+                            }
+                            else {
+                                USB_sendS("Error, intente nuevamente\n");
+                            }
+                            break;
+                        case '6':
+                            if( RTCC_TimeGet(&auxTM) ) {
+                                USB_sendS("Consultar telefono registrado:\n");
+                                
+                                USB_sendS(phone);
+                            }
+                            else {
+                                USB_sendS("Error, intente nuevamente\n");
+                            }
+                            break;                          
+                        case '7':
+                            if( RTCC_TimeGet(&auxTM) ) {
+                                //POSICIONLOGS = 0;
+                                
+                                WriteLogs();
+                                
+                                /*
+                                while(i<=logPosition)
+                                {
+                                    USB_sendS("a");                          
+                                    memset(logWriter, 0, sizeof(logWriter) );
+                                    
+                                    strcpy(logWriter,"Registro ");
+                                    
+                                    USB_sendS(logWriter);
+                                    
+                                    sprintf(idRegistroLog, "%f", logsEvents[i]);
+                                    
+                                    strcat(logWriter,idRegistroLog);
+                                    USB_sendS(logWriter);
+                                    //USB_sendS(WriteLogs(logsEvents[i]));
+                                    i++;
                                 }
+                                i=0;*/
                             }
-                            if( !dataValid ) {
-                                USB_sendS("No hay eventos activos\n");
+                            else {
+                                USB_sendS("Error, intente nuevamente\n");
                             }
-                            break;
-                            // </editor-fold>
-
-                            // <editor-fold defaultstate="collapsed" desc="Opción no válida">
+                            break;                                
                         default:
-                            USB_sendS("Opción no válida\n");
+                            USB_sendS("Opción no válida, intente nuevamente\n");
                             break;
-                            // </editor-fold>
                     }
                     s_state_menuTask = UI_MENU_STATE_MAIN;
                     break;
@@ -314,6 +210,8 @@ void UI_menuTask( void* p_param ) {
     }
 }
 
+
+// </editor-fold>
 // </editor-fold>
 
 
