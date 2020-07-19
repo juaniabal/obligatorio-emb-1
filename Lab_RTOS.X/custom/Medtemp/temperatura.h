@@ -35,7 +35,7 @@
 
 void prendoAnillo(ws2812_t color);
 void apagoAnillo();
-void medirtemperatura();
+void medirtemperatura(int umbral);
 
 #endif /* _EXAMPLE_FILE_NAME_H */
 

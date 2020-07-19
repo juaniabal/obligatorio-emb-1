@@ -25,6 +25,7 @@
 #include "../LEDsRGB/WS2812.h"
 #include "../../freeRTOS/include/FreeRTOS.h"
 #include "../../mcc_generated_files/adc1.h"
+#include "temperatura.h"
 #include <stdio.h>
 #include <string.h>
 
@@ -46,11 +47,11 @@ void apagoAnillo(){
     WS2812_send(aux,8);
 }
 
-void medirtemperatura() {
+void medirtemperatura(int umbral) {
     uint16_t voltaje = 0; //voltaje=un número desde 0 a 1023
     float grados = 0;
     int i = 0;
-    float total = 0;
+    uint16_t total = 0;
     for (i = 0; i < 5; i++) {
         ADC1_ChannelSelect(TempVol);
         ADC1_SoftwareTriggerEnable();
@@ -78,14 +79,14 @@ void medirtemperatura() {
     total = total / 10;
     vTaskDelay(pdMS_TO_TICKS(100));
     //USB_sendS(redondeado);
-    if(total >= 37){
+    if(total >= umbral){
         prendoAnillo(RED);          
     }
     else{
         prendoAnillo(GREEN);
     }
-    uint8_t redondeado[16];
-    sprintf(redondeado, "%.1f\n", total); //En "redondeado" queda una cadena con el voltaje.
+    uint16_t redondeado[16];
+    sprintf(redondeado, "%.1d\n", total); //En "redondeado" queda una cadena con el voltaje.
     USB_sendS(redondeado);  
     vTaskDelay(pdMS_TO_TICKS(2000));
     apagoAnillo();

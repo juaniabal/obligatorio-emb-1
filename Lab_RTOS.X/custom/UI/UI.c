@@ -15,12 +15,11 @@
 // </editor-fold>
 
 // <editor-fold defaultstate="collapsed" desc="File Scope or Global Data">
-
-
+   extern uint8_t umbral1 = 37;
 // </editor-fold>
 
 // <editor-fold defaultstate="collapsed" desc="Local Functions">
-
+ 
 
 // </editor-fold>
 
@@ -33,7 +32,7 @@ void UI_menuTask( void* p_param) { //preguntar como hacer para que log.idregistr
     bool dataValid;
     uint8_t id[10];
     uint8_t phone[50];
-    uint8_t umbral[50];
+    uint8_t umbral[10];
     logger log;
     uint8_t i = 0; 
     //char logWriter[45];
@@ -112,12 +111,13 @@ void UI_menuTask( void* p_param) { //preguntar como hacer para que log.idregistr
                         case '3':
                             if( RTCC_TimeGet(&auxTM) ) {
                                 do {
+                                    
                                     USB_sendS("Nuevo umbral:");
                                     USB_receive(umbral,sizeof(umbral));
                                     USB_sendS("\n");
                                     dataValid = true;
                                 }while( !dataValid );
-
+                                umbral1 = atof(umbral);
                                 
                                 RTCC_TimeSet(&auxTM);
                                 USB_sendS("Umbral configurado exitosamente\n");
@@ -129,9 +129,14 @@ void UI_menuTask( void* p_param) { //preguntar como hacer para que log.idregistr
                           
                         case '4':
                             if( RTCC_TimeGet(&auxTM) ) {
-                                USB_sendS("Consultar umbral:\n");
+                                USB_sendS("El umbral es: \n");
                                 
-                                USB_sendS(umbral);
+                                //USB_sendS(umbral);
+                                //vTaskDelay(pdMS_TO_TICKS(30));
+                                char umbral2[5];
+                                sprintf(umbral2, "%d", umbral1);
+                                //USB_sendS("Consultar umbral2:\n");
+                                USB_sendS(umbral2);
                             }
                             else {
                                 USB_sendS("Error, intente nuevamente\n");
@@ -209,7 +214,17 @@ void UI_menuTask( void* p_param) { //preguntar como hacer para que log.idregistr
         }
     }
 }
-
+void BTN_taskCheck(void *p_param){
+    
+    while(1){
+        vTaskDelay(pdMS_TO_TICKS(400));
+        if (getButton1()) { 
+            
+            medirtemperatura(umbral1);
+            resetButton1();
+        }  
+    }
+}
 
 // </editor-fold>
 // </editor-fold>

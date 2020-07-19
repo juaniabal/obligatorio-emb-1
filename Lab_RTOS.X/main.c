@@ -101,17 +101,7 @@ void blinkLED( void *p_param ) {
         vTaskDelay(pdMS_TO_TICKS(800));
     }
 }
-void BTN_taskCheck(void *p_param){
-    while(1){
-        vTaskDelay(pdMS_TO_TICKS(400));
 
-        if (getButton1()) { 
-            medirtemperatura();
-            resetButton1();
-
-        }
-    }
-}
 
 // <editor-fold defaultstate="collapsed" desc="freeRTOS functions">
 
