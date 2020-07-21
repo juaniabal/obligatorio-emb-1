@@ -38,9 +38,9 @@
 // *****************************************************************************
 // *****************************************************************************
 
-void prendoAnillo(ws2812_t color);
+void prendoAnillo(int color);
 void apagoAnillo();
-void medirtemperatura(int umbral);
+void medirtemperatura(int umbral, int parpadeo, int positivo, int negativo);
 
 #endif /* _EXAMPLE_FILE_NAME_H */
 

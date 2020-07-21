@@ -68,7 +68,7 @@ void obtenerUbicacionTiempo() {
     }
     USB_sendS(gpss);
     /*
-    GPS_getPosition(&pos, gpss);
+    GPS_getPosition(pos, gpss);
     vTaskDelay(pdMS_TO_TICKS(100));
     GPS_getUTC(&hora, pos);
     vTaskDelay(pdMS_TO_TICKS(100));

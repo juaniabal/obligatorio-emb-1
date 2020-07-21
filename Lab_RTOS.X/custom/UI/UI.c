@@ -16,9 +16,11 @@
 
 // <editor-fold defaultstate="collapsed" desc="File Scope or Global Data">
    extern uint8_t umbral1 = 37;
-   ws2812_t parpadeo = BLUE;
-   ws2812_t positivo = RED;
-   ws2812_t negativo = GREEN;
+   extern int parpadeo = 1;
+   extern int positivo = 2;
+   extern int negativo = 3;
+
+
 // </editor-fold>
 
 // <editor-fold defaultstate="collapsed" desc="Local Functions">
@@ -38,6 +40,9 @@ void UI_menuTask( void* p_param) { //preguntar como hacer para que log.idregistr
     uint8_t umbral[10];
     logger log;
     uint8_t i = 0; 
+    uint8_t parp[10];
+    uint8_t pos[10];
+    uint8_t neg[10];
     //char logWriter[45];
     //char idRegistroLog[5];
     
@@ -54,6 +59,7 @@ void UI_menuTask( void* p_param) { //preguntar como hacer para que log.idregistr
                     USB_sendS("6_ Cambiar telefono\n");
                     USB_sendS("7_ Imprimir logs\n");
                     USB_sendS("8_ Borrar logs\n");
+                    USB_sendS("9_ Configurar el color de los led en el parpadeo, cuando da positivo y cuando da negativo\n");
                     s_state_menuTask = UI_MENU_STATE_WAIT_INPUT;
                     
                     // Intentionally fall through
@@ -151,7 +157,7 @@ void UI_menuTask( void* p_param) { //preguntar como hacer para que log.idregistr
                                     USB_sendS("\n");
                                     dataValid = true;
                                 }while( !dataValid );
-
+                                    
                                 
                                 RTCC_TimeSet(&auxTM);
                                 USB_sendS("Telefono configurado exitosamente\n");
@@ -207,7 +213,43 @@ void UI_menuTask( void* p_param) { //preguntar como hacer para que log.idregistr
                             } else {
                                 USB_sendS("Error, intente nuevamente\n");
                             }
-                            break;     
+                            break;    
+                        case '9':
+                            if( RTCC_TimeGet(&auxTM) ) {
+                                do {
+                                    USB_sendS("Para configurar el parpadeo\n");
+                                    USB_sendS("Ingrese 1 para el color Azul, 2 Rojo, 3 Verde, 4 Blanco y si ingresa uno diferente no tendra color.");
+                                    USB_receive(parp,sizeof(parp));
+                                    USB_sendS("\n");
+                                    dataValid = true;
+                                }while( !dataValid );
+                                parpadeo = atof(parp);
+                                dataValid = false;
+                                do {
+                                    USB_sendS("Para configurar el Positivo\n");
+                                    USB_sendS("Ingrese 1 para el color Azul, 2 Rojo, 3 Verde, 4 Blanco y si ingresa uno diferente no tendra color.\n");
+                                    USB_receive(pos,sizeof(pos));
+                                    USB_sendS("\n");
+                                    dataValid = true;
+                                }while( !dataValid );
+                                positivo = atof(pos);
+                                dataValid = false;
+                                do {
+                                    USB_sendS("Para configurar el Negativo\n");
+                                    USB_sendS("Ingrese 1 para el color Azul, 2 Rojo, 3 Verde, 4 Blanco y si ingresa uno diferente no tendra color.\n");
+                                    USB_receive(neg,sizeof(neg));
+                                    USB_sendS("\n");
+                                    dataValid = true;
+                                }while( !dataValid );
+                                negativo = atof(neg);
+                                
+                                RTCC_TimeSet(&auxTM);
+                                USB_sendS("Colores configurados exitosamente\n");
+                            }
+                            else {
+                                USB_sendS("Error, intente nuevamente\n");
+                            }
+                            break;    
                         default:
                             USB_sendS("Opción no válida, intente nuevamente\n");
                             break;
@@ -230,9 +272,9 @@ void BTN_taskCheck(void *p_param){
         vTaskDelay(pdMS_TO_TICKS(400));
         if (getButton1()) { 
             
-            medirtemperatura(umbral1);
+            medirtemperatura(umbral1, parpadeo, positivo, negativo);
             vTaskDelay(pdMS_TO_TICKS(40));
-            obtenerUbicacionTiempo();
+            //obtenerUbicacionTiempo();
             resetButton1();
         }  
     }
