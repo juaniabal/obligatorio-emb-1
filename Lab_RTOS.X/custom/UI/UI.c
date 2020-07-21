@@ -16,6 +16,9 @@
 
 // <editor-fold defaultstate="collapsed" desc="File Scope or Global Data">
    extern uint8_t umbral1 = 37;
+   ws2812_t parpadeo = BLUE;
+   ws2812_t positivo = RED;
+   ws2812_t negativo = GREEN;
 // </editor-fold>
 
 // <editor-fold defaultstate="collapsed" desc="Local Functions">
@@ -50,6 +53,7 @@ void UI_menuTask( void* p_param) { //preguntar como hacer para que log.idregistr
                     USB_sendS("5_ Registrar telefono\n");
                     USB_sendS("6_ Cambiar telefono\n");
                     USB_sendS("7_ Imprimir logs\n");
+                    USB_sendS("8_ Borrar logs\n");
                     s_state_menuTask = UI_MENU_STATE_WAIT_INPUT;
                     
                     // Intentionally fall through
@@ -100,7 +104,7 @@ void UI_menuTask( void* p_param) { //preguntar como hacer para que log.idregistr
                            
                         case '2':
                             if( RTCC_TimeGet(&auxTM) ) {
-                                USB_sendS("ID es:\n");
+                                USB_sendS("El ID es:\n");
                                 
                                 USB_sendS(id);
                             }
@@ -112,7 +116,7 @@ void UI_menuTask( void* p_param) { //preguntar como hacer para que log.idregistr
                             if( RTCC_TimeGet(&auxTM) ) {
                                 do {
                                     
-                                    USB_sendS("Nuevo umbral:");
+                                    USB_sendS("Ingrese un nuevo umbral:");
                                     USB_receive(umbral,sizeof(umbral));
                                     USB_sendS("\n");
                                     dataValid = true;
@@ -130,12 +134,9 @@ void UI_menuTask( void* p_param) { //preguntar como hacer para que log.idregistr
                         case '4':
                             if( RTCC_TimeGet(&auxTM) ) {
                                 USB_sendS("El umbral es: \n");
-                                
-                                //USB_sendS(umbral);
-                                //vTaskDelay(pdMS_TO_TICKS(30));
                                 char umbral2[5];
                                 sprintf(umbral2, "%d", umbral1);
-                                //USB_sendS("Consultar umbral2:\n");
+                                
                                 USB_sendS(umbral2);
                             }
                             else {
@@ -145,7 +146,7 @@ void UI_menuTask( void* p_param) { //preguntar como hacer para que log.idregistr
                         case '5':
                             if( RTCC_TimeGet(&auxTM) ) {
                                 do {
-                                    USB_sendS("Ingrese Telefono registrado: ");
+                                    USB_sendS("Ingrese un numero telefonico: ");
                                     USB_receive(phone,sizeof(phone));
                                     USB_sendS("\n");
                                     dataValid = true;
@@ -161,7 +162,7 @@ void UI_menuTask( void* p_param) { //preguntar como hacer para que log.idregistr
                             break;
                         case '6':
                             if( RTCC_TimeGet(&auxTM) ) {
-                                USB_sendS("Consultar telefono registrado:\n");
+                                USB_sendS("El telefono registrado es:\n");
                                 
                                 USB_sendS(phone);
                             }
@@ -197,7 +198,16 @@ void UI_menuTask( void* p_param) { //preguntar como hacer para que log.idregistr
                             else {
                                 USB_sendS("Error, intente nuevamente\n");
                             }
-                            break;                                
+                            break;
+                        case '8':
+                            if (RTCC_TimeGet(&auxTM)) {
+                                USB_sendS("Se han borrado todos los registros.:\n");
+
+                                
+                            } else {
+                                USB_sendS("Error, intente nuevamente\n");
+                            }
+                            break;     
                         default:
                             USB_sendS("Opción no válida, intente nuevamente\n");
                             break;
@@ -221,6 +231,8 @@ void BTN_taskCheck(void *p_param){
         if (getButton1()) { 
             
             medirtemperatura(umbral1);
+            vTaskDelay(pdMS_TO_TICKS(40));
+            obtenerUbicacionTiempo();
             resetButton1();
         }  
     }

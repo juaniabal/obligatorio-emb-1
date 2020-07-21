@@ -13,6 +13,7 @@
         <itemPath>custom/Medtemp/temperatura.h</itemPath>
         <itemPath>custom/buttons/buttons.h</itemPath>
         <itemPath>custom/Logs/logs.h</itemPath>
+        <itemPath>custom/UbicacionTiempo/ubitime.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f1" displayName="freeRTOS" projectFiles="true">
         <itemPath>freeRTOS/include/FreeRTOS.h</itemPath>
@@ -101,6 +102,7 @@
         <itemPath>mcc_generated_files/uart1.c</itemPath>
       </logicalFolder>
       <itemPath>main.c</itemPath>
+      <itemPath>custom/UbicacionTiempo/ubitime.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
