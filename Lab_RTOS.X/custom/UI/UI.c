@@ -15,10 +15,10 @@
 // </editor-fold>
 
 // <editor-fold defaultstate="collapsed" desc="File Scope or Global Data">
-   extern uint8_t umbral1 = 37;
-   extern int parpadeo = 1;
-   extern int positivo = 2;
-   extern int negativo = 3;
+    uint8_t umbral1 = 37;
+    int parpadeo = 1;
+    int positivo = 2;
+    int negativo = 3;
 
 
 // </editor-fold>

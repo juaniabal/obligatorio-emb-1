@@ -32,6 +32,8 @@
 #define GPS_RMC_UTC_LEN         18
 #define GPS_RMC_LAT_LEN         10
 #define GPS_RMC_LON_LEN         11
+#define GPS_RMC_SPACE_LEN       10
+
 
 #define GPS_LAT_DIR_SOUTH       'S'
 #define GPS_LAT_DIR_NORTH       'N'
