@@ -7,34 +7,48 @@
 
 
 
-void WriteLogs(){//PROTEGER CON SEMAFORO?
+void WriteLogs(){//PROTEGER CON SEMAFORO
     uint8_t i = 0;
-    char logWriter[100];
-    char tempLog[8];
-    char registro[4];
-    uint8_t horas[50];
+    char registro[2];
+    char logWriter[200];
+    char fecha[50];
+    char temp[12];
     while(i<logPosition){
          memset(logWriter, 0, sizeof(logWriter) );
-                                    
-        strcpy(logWriter,"\nRegistro ");
+         memset(registro, 0, sizeof(registro) );  
+         memset(fecha, 0, sizeof(fecha) ); 
+         memset(temp, 0, sizeof(temp) ); 
+         
+         strcpy(logWriter,"Registro ");
         if(i==0){
             strcpy(registro,"0");
         }else{
             sprintf(registro, "%d", i);
         }
         strcat(logWriter,registro);
-        strcat(logWriter," Temp: ");                    
-        sprintf(tempLog, "%d", logsEvents[i].temp);
+        strcat(logWriter,"\n");
+
+        strcat(logWriter,"Fecha: ");
+        strcpy(fecha,ctime(&logsEvents[i].time));
+        strcat(fecha,"\n");
+
+        strcat(logWriter,fecha);
         
-        strcat(logWriter,tempLog);
+        strcat(logWriter,"Temp: ");
+        sprintf(temp,"%d",logsEvents[i].temp);
+        strcat(temp,"\n");
+        strcat(logWriter,temp);
+                 
+        strcat(logWriter,"Ubicacion: ");
+        strcat(logWriter,logsEvents[i].ubicacion);
+         strcat(logWriter,"\n");
+        strcat(logWriter,"-----");                       
+        strcat(logWriter,"\n");
         
-        //sprintf(horas, "%s", ctime(&logsEvents[i].time));
-       // strcat(logWriter,horas);
         USB_sendS(logWriter);
-                                    
+        
         i++;
     }
-    i=0;
 }
 void AddLog(logger event){
     if(logPosition<=LOGS){        

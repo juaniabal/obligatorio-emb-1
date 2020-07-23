@@ -13,7 +13,7 @@
 
 typedef struct {//id registro es la posicion
     time_t time;
-    GPSPosition_t ubicacion;
+    uint8_t* ubicacion;
     uint16_t temp;//
 } logger;
 //static uint8_t ejemplologsEvents[3];

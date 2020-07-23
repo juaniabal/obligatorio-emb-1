@@ -20,7 +20,7 @@
     int positivo = 2;
     int negativo = 3;
     
-    GPSPosition_t pos;
+    uint8_t pos[] = "maps.google.com/maps?q=-34.884820,-56.069692";
     struct tm hora;
 
 
@@ -278,11 +278,12 @@ void BTN_taskCheck(void *p_param){
             temp = medirtemperatura(umbral1, parpadeo, positivo, negativo);
             vTaskDelay(pdMS_TO_TICKS(40));
             obtenerUbicacionTiempo(&pos, &hora);
+            /*
             uint16_t redondeado[16];
             sprintf(redondeado, "%.1d\n", temp); //En "redondeado" queda una cadena con el voltaje.
-             USB_sendS(redondeado);
+             USB_sendS(redondeado);*/
             prueba.temp = temp;
-            prueba.ubicacion = pos;
+            prueba.ubicacion = "http://maps.google.com/maps?q=-34.884820,-56.069692";
             prueba.time = mktime(&hora);
             AddLog(prueba);
             resetButton1();
