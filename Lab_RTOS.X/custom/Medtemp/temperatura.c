@@ -117,6 +117,7 @@ void medirtemperatura(int umbral, int parpadeo, int positivo, int negativo) {
     USB_sendS(redondeado);
     vTaskDelay(pdMS_TO_TICKS(2000));
     apagoAnillo();
+    obtenerUbicacionTiempo();
 }
 
 /* *****************************************************************************

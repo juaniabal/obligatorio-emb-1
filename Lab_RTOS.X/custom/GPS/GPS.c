@@ -60,7 +60,7 @@ void GPS_getPosition( GPSPosition_t *p_pos, uint8_t *p_sentence ){
     @Remarks
         String must start after +CGNSINF: 
  **/
-void GPS_getUTC( struct tm *p_newtime, uint8_t *p_sentence ){
+void GPS_getUTC(struct tm *p_newtime, uint8_t *p_sentence ){
     uint8_t offset;
     uint8_t temp_str[5];
 
