@@ -75,7 +75,7 @@ void apagoAnillo() {
     WS2812_send(aux, 8);
 }
 
-void medirtemperatura(int umbral, int parpadeo, int positivo, int negativo) {
+uint16_t medirtemperatura(int umbral, int parpadeo, int positivo, int negativo) {
     uint16_t voltaje = 0; //voltaje=un número desde 0 a 1023
     float grados = 0;
     int i = 0;
@@ -117,7 +117,7 @@ void medirtemperatura(int umbral, int parpadeo, int positivo, int negativo) {
     USB_sendS(redondeado);
     vTaskDelay(pdMS_TO_TICKS(2000));
     apagoAnillo();
-    obtenerUbicacionTiempo();
+    return total;
 }
 
 /* *****************************************************************************

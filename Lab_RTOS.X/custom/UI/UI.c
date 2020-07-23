@@ -19,6 +19,9 @@
     int parpadeo = 1;
     int positivo = 2;
     int negativo = 3;
+    
+    GPSPosition_t pos;
+    struct tm hora;
 
 
 // </editor-fold>
@@ -28,7 +31,6 @@
 
 // </editor-fold>
 
-// <editor-fold defaultstate="collapsed" desc="Interface Functions">
 
 void UI_menuTask( void* p_param) { //preguntar como hacer para que log.idregistro = id;
     UI_MENU_STATES s_state_menuTask = UI_MENU_STATE_MAIN;
@@ -89,9 +91,9 @@ void UI_menuTask( void* p_param) { //preguntar como hacer para que log.idregistr
                                     
                                     USB_sendS("\n");
                                     dataValid = true;
-                                    log.temp = atof(id);
+                                   /* log.temp = atof(id);
                                     
-                                    AddLog(log);
+                                    AddLog(log);*/
                                 }while( !dataValid );
 
                                 RTCC_TimeSet(&auxTM);
@@ -268,13 +270,21 @@ void UI_menuTask( void* p_param) { //preguntar como hacer para que log.idregistr
 }
 void BTN_taskCheck(void *p_param){
     
+    logger prueba;
     while(1){
         vTaskDelay(pdMS_TO_TICKS(400));
         if (getButton1()) { 
-            
-            medirtemperatura(umbral1, parpadeo, positivo, negativo);
+            uint16_t temp;
+            temp = medirtemperatura(umbral1, parpadeo, positivo, negativo);
             vTaskDelay(pdMS_TO_TICKS(40));
-            //obtenerUbicacionTiempo();
+            obtenerUbicacionTiempo(&pos, &hora);
+            uint16_t redondeado[16];
+            sprintf(redondeado, "%.1d\n", temp); //En "redondeado" queda una cadena con el voltaje.
+             USB_sendS(redondeado);
+            prueba.temp = temp;
+            prueba.ubicacion = pos;
+            prueba.time = mktime(&hora);
+            AddLog(prueba);
             resetButton1();
         }  
     }

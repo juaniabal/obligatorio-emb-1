@@ -15,8 +15,8 @@
  */
 /* ************************************************************************** */
 
-#ifndef temp    /* Guard against multiple inclusion */
-#define temp
+#ifndef temper    /* Guard against multiple inclusion */
+#define temper
 
 
 /* ************************************************************************** */
@@ -40,7 +40,7 @@
 
 void prendoAnillo(int color);
 void apagoAnillo();
-void medirtemperatura(int umbral, int parpadeo, int positivo, int negativo);
+uint16_t medirtemperatura(int umbral, int parpadeo, int positivo, int negativo);
 
 #endif /* _EXAMPLE_FILE_NAME_H */
 

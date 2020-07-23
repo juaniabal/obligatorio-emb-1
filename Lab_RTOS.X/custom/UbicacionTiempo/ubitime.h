@@ -24,7 +24,7 @@
 /* Section: Included Files                                                    */
 /* ************************************************************************** */
 /* ************************************************************************** */
-
+#include "../GPS/GPS.h"
 /* This section lists the other files that are included in this file.
  */
 
@@ -105,7 +105,7 @@
     // *****************************************************************************
     // *****************************************************************************
 
-void obtenerUbicacionTiempo();
+void obtenerUbicacionTiempo(GPSPosition_t *pos, struct tm *hora);
 
 
 #endif /* _EXAMPLE_FILE_NAME_H */
