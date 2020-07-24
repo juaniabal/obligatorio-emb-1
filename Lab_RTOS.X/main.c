@@ -71,10 +71,10 @@ int main( void ) {
     USB_initialize();
     BTN1_SetInterruptHandler(&setTrueButton1);
 
-    xTaskCreate(BTN_taskCheck,"BTN TURN ON",configMINIMAL_STACK_SIZE+400, NULL, tskIDLE_PRIORITY + 3, NULL);
+    xTaskCreate(BTN_taskCheck,"BTN TURN ON",configMINIMAL_STACK_SIZE+600, NULL, tskIDLE_PRIORITY + 3, NULL);
 
     xTaskCreate(USB_taskCheck, "checkUSB", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY + 1, NULL);
-    xTaskCreate(UI_menuTask, "mainMenu", configMINIMAL_STACK_SIZE+200, NULL, tskIDLE_PRIORITY + 2, NULL);
+    xTaskCreate(UI_menuTask, "mainMenu", configMINIMAL_STACK_SIZE+600, NULL, tskIDLE_PRIORITY + 2, NULL);
     xTaskCreate(blinkLED, "Heartbeat", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY + 3, NULL);
     xTaskCreate( SIM808_taskCheck, "modemTask", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY+1, NULL );
     xTaskCreate( SIM808_initModule, "modemIni", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY+2, &modemInitHandle );

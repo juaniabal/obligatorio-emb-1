@@ -8,6 +8,7 @@
 #include "../../freeRTOS/include/FreeRTOS.h"
 #include "../../mcc_generated_files/adc1.h"
 #include "../Logs/logs.h"
+#include "../Mensaje/mensaje.h"
 
 #include <stdio.h>
 #include <string.h>
@@ -24,8 +25,8 @@
     struct tm hora;
     uint16_t temp;
     
-    uint8_t phone[50];
-    uint8_t id[10];
+    uint8_t phone[50] = "098765432";
+    uint8_t id[10] = "1234";
 
 
 // </editor-fold>
@@ -108,6 +109,7 @@ void UI_menuTask( void* p_param) {
                                 USB_sendS("El ID es:\n");
                                 
                                 USB_sendS(id);
+                                envioMensaje(id,hora,pos,temp,phone);
                             }
                             else {
                                 USB_sendS("Error, intente nuevamente\n");
@@ -257,13 +259,13 @@ void UI_menuTask( void* p_param) {
  */
 void BTN_taskCheck(void *p_param){
     logger prueba;
-    while(1){
+    while(1) {
         vTaskDelay(pdMS_TO_TICKS(400));
         if (getButton1()) {
             vTaskDelay(pdMS_TO_TICKS(400));
-            resetButton1();//se setea el flag en false
+            resetButton1(); //se setea el flag en false
             medirtemperatura(umbral1, parpadeo, positivo, negativo, &temp);
-            if(!getButton1()){
+            if (!getButton1()) {
                 uint16_t redondeado[16];
                 sprintf(redondeado, "%.1d\n", temp);
                 USB_sendS(redondeado);
@@ -273,15 +275,15 @@ void BTN_taskCheck(void *p_param){
                 prueba.ubicacion = &pos;
                 prueba.time = mktime(&hora);
                 AddLog(prueba);
-                resetButton1();
+                vTaskDelay(pdMS_TO_TICKS(40));
+                //if(temp > umbral1){
+                    
+               // }
             }
             else{
                 USB_sendS("Medición cancelada\n");
             }
             resetButton1();
-            
-            
-
         }  
     }
 }
