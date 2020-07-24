@@ -6,8 +6,16 @@
 #include "../../mcc_generated_files/adc1.h"
 
 
-
-void WriteLogs(){//PROTEGER CON SEMAFORO
+/**
+ * @Function
+ *  WriteLogs()
+ *
+ * @Summary
+ *   Función que envía toda la información almacenada en la lista de
+ *  "eventos" que tenemos al USB. 
+ * 
+ */
+void WriteLogs(){
     uint8_t i = 0;
     char registro[2];
     char logWriter[200];
@@ -50,6 +58,19 @@ void WriteLogs(){//PROTEGER CON SEMAFORO
         i++;
     }
 }
+/**
+ * @Function
+ *  AddLog(logger event)
+ *
+ * @Summary
+ *   Función agrega eventos a la lista de los logs
+ * 
+ * @Remarks
+ *   Si se agregan mas eventos de la cantidad permitida, no seran agregados.   
+ * 
+ *  * @Param:  event: es el evento donde se almacena lo ocurrido
+ *          
+ */
 void AddLog(logger event){
     if(logPosition<=LOGS){        
         logsEvents[logPosition] = event; 

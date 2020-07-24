@@ -29,10 +29,19 @@
 // <editor-fold defaultstate="collapsed" desc="Local Functions">
  
 
-// </editor-fold>
 
 
-void UI_menuTask( void* p_param) { //preguntar como hacer para que log.idregistro = id;
+/**
+ * @Function
+ *  UI_menuTask
+ *
+ * @Summary
+ *   Función que despliega el menu al USB
+ *   
+ *          
+ */
+void UI_menuTask( void* p_param) { 
+ // <editor-fold defaultstate="collapsed" desc="variables">
     UI_MENU_STATES s_state_menuTask = UI_MENU_STATE_MAIN;
     uint8_t inputBuffer[50];
     struct tm auxTM;
@@ -45,12 +54,12 @@ void UI_menuTask( void* p_param) { //preguntar como hacer para que log.idregistr
     uint8_t parp[10];
     uint8_t pos[10];
     uint8_t neg[10];
-    //char logWriter[45];
-    //char idRegistroLog[5];
+// </editor-fold>
     
     while( 1 ) {
         if( USB_isConnected() ) {
             switch( s_state_menuTask ) {
+         // <editor-fold defaultstate="collapsed" desc="Opciones">
                 case UI_MENU_STATE_MAIN:
                     USB_sendS("\nMENU PRINCIPAL\n");
                     USB_sendS("1_ Setear ID\n");
@@ -64,8 +73,8 @@ void UI_menuTask( void* p_param) { //preguntar como hacer para que log.idregistr
                     USB_sendS("9_ Configurar el color de los led en el parpadeo, cuando da positivo y cuando da negativo\n");
                     s_state_menuTask = UI_MENU_STATE_WAIT_INPUT;
                     
-                    // Intentionally fall through
-
+            // </editor-fold>
+                     // <editor-fold defaultstate="collapsed" desc="Opcion elegida">
                 case UI_MENU_STATE_WAIT_INPUT:
                     USB_receive(inputBuffer, sizeof (inputBuffer));
 
@@ -77,38 +86,20 @@ void UI_menuTask( void* p_param) { //preguntar como hacer para que log.idregistr
                                 do {
                                     USB_sendS("Ingrese ID: ");
                                     USB_receive(id,sizeof(id));
-                                    
-                                    //sprintf(idRegistroLog, "%d", id);
-                                    
 
-                                    /*if(logPosition<=LOGS){
-                                        logsEvents[logPosition] = log; 
-                                        logPosition++;
-                                    }*/
-
-                                    //log.temp = 37.0;
-                                    
-                                    
                                     USB_sendS("\n");
                                     dataValid = true;
-                                   /* log.temp = atof(id);
-                                    
-                                    AddLog(log);*/
+
                                 }while( !dataValid );
 
                                 RTCC_TimeSet(&auxTM);
-                                                                
-                                
-                                //
-                                    
-                                //AddLog(log);
                                 USB_sendS("ID configurado exitosamente\n");
                             }
                             else {
                                 USB_sendS("Error, intente nuevamente\n");
                             }
                             break;
-                            // </editor-fold>
+                           
                            
                         case '2':
                             if( RTCC_TimeGet(&auxTM) ) {
@@ -180,28 +171,9 @@ void UI_menuTask( void* p_param) { //preguntar como hacer para que log.idregistr
                             break;                          
                         case '7':
                             if( RTCC_TimeGet(&auxTM) ) {
-                                //POSICIONLOGS = 0;
                                 
                                 WriteLogs();
-                                
-                                /*
-                                while(i<=logPosition)
-                                {
-                                    USB_sendS("a");                          
-                                    memset(logWriter, 0, sizeof(logWriter) );
-                                    
-                                    strcpy(logWriter,"Registro ");
-                                    
-                                    USB_sendS(logWriter);
-                                    
-                                    sprintf(idRegistroLog, "%f", logsEvents[i]);
-                                    
-                                    strcat(logWriter,idRegistroLog);
-                                    USB_sendS(logWriter);
-                                    //USB_sendS(WriteLogs(logsEvents[i]));
-                                    i++;
-                                }
-                                i=0;*/
+
                             }
                             else {
                                 USB_sendS("Error, intente nuevamente\n");
@@ -209,6 +181,7 @@ void UI_menuTask( void* p_param) { //preguntar como hacer para que log.idregistr
                             break;
                         case '8':
                             if (RTCC_TimeGet(&auxTM)) {
+                                logPosition=0;
                                 USB_sendS("Se han borrado todos los registros.:\n");
 
                                 
@@ -267,7 +240,22 @@ void UI_menuTask( void* p_param) { //preguntar como hacer para que log.idregistr
             vTaskDelay(pdMS_TO_TICKS(3000));
         }
     }
+    // </editor-fold>
 }
+// <editor-fold defaultstate="collapsed" desc="BTN check">
+ 
+
+
+/**
+ * @Function
+ *  BTN_taskCheck
+ *
+ * @Summary
+ *   Función agrega eventos a la lista de los logs, obteniendo al mismo tiempo
+ * la temperatura y  ubicacion de la placa
+ * 
+ *          
+ */
 void BTN_taskCheck(void *p_param){
     
     logger prueba;
@@ -278,10 +266,6 @@ void BTN_taskCheck(void *p_param){
             temp = medirtemperatura(umbral1, parpadeo, positivo, negativo);
             vTaskDelay(pdMS_TO_TICKS(40));
             obtenerUbicacionTiempo(&pos, &hora);
-            /*
-            uint16_t redondeado[16];
-            sprintf(redondeado, "%.1d\n", temp); //En "redondeado" queda una cadena con el voltaje.
-             USB_sendS(redondeado);*/
             prueba.temp = temp;
             prueba.ubicacion = &pos;
             prueba.time = mktime(&hora);
@@ -290,8 +274,9 @@ void BTN_taskCheck(void *p_param){
         }  
     }
 }
+// </editor-fold>
 
 // </editor-fold>
 // </editor-fold>
-
+// </editor-fold>
 

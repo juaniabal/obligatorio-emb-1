@@ -1,25 +1,3 @@
-/* ************************************************************************** */
-/** Descriptive File Name
-
-  @Company
-    Company Name
-
-  @File Name
-    filename.c
-
-  @Summary
-    Brief description of the file.
-
-  @Description
-    Describe the purpose of this file.
- */
-/* ************************************************************************** */
-
-/* ************************************************************************** */
-/* ************************************************************************** */
-/* Section: Included Files                                                    */
-/* ************************************************************************** */
-/* ************************************************************************** */
 
 
 #include "../LEDsRGB/WS2812.h"
@@ -28,6 +6,7 @@
 #include "temperatura.h"
 #include <stdio.h>
 #include <string.h>
+
 
 void prendoAnillo(int color) {
     int i;
@@ -65,7 +44,16 @@ void prendoAnillo(int color) {
             break;
     }
 }
-
+/**
+ * @Function
+ *  apagoAnillo()
+ *
+ * @Summary
+ *   Función que "apaga" todos los leds o en otras palabras setea a cada led
+ *  del anillo el color negro.
+ * 
+ *          
+ */
 void apagoAnillo() {
     int i;
     ws2812_t aux[8];
@@ -74,9 +62,28 @@ void apagoAnillo() {
     }
     WS2812_send(aux, 8);
 }
-
+/**
+ * @Function
+ *   medirtemperatura(int umbral, int parpadeo, int positivo, int negativo)
+ *
+ * @Summary
+ *   Función devuelve la temperatura calculada y enciende los leds que se
+ * encuentran en el anillo. Se encienden cuando se obtiene un resultado
+ * y cuando esta consiguiendo el promedio
+ *  
+ * 
+ *  * @Param:   umbral: es el numero con el que se compara la temperatura 
+ *          conseguida a traves del voltaje de la placa.  
+ *          
+ *              parpadeo: es un numero que indica el color a prender mientras esta
+ *          haciendo el promedio de las temperaturas
+ *              positivo: es un numero que indica el color si el numero del
+ *          umbral es menor al del promedio de la temperatura obtenida
+ *              negativo: es un numero que indica el color si el numero del
+ *          umbral es mayor al del promedio de la temperatura obtenida         
+ */
 uint16_t medirtemperatura(int umbral, int parpadeo, int positivo, int negativo) {
-    uint16_t voltaje = 0; //voltaje=un número desde 0 a 1023
+    uint16_t voltaje = 0; 
     float grados = 0;
     int i = 0;
     uint16_t total = 0;
@@ -113,7 +120,7 @@ uint16_t medirtemperatura(int umbral, int parpadeo, int positivo, int negativo) 
         prendoAnillo(negativo);
     }
     uint16_t redondeado[16];
-    sprintf(redondeado, "%.1d\n", total); //En "redondeado" queda una cadena con el voltaje.
+    sprintf(redondeado, "%.1d\n", total);
     USB_sendS(redondeado);
     vTaskDelay(pdMS_TO_TICKS(2000));
     apagoAnillo();

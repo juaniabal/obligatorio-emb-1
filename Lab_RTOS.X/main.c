@@ -63,9 +63,7 @@ void BTN_taskCheck(void *p_param);
 
 void blinkLED( void *p_param );
 
-/*
-                         Main application
- */
+
 int main( void ) {
     // initialize the device
     SYSTEM_Initialize();
@@ -73,7 +71,6 @@ int main( void ) {
     USB_initialize();
     BTN1_SetInterruptHandler(&setTrueButton1);
 
-    /* Create the tasks defined within this file. */
     xTaskCreate(BTN_taskCheck,"BTN TURN ON",configMINIMAL_STACK_SIZE+400, NULL, tskIDLE_PRIORITY + 3, NULL);
 
     xTaskCreate(USB_taskCheck, "checkUSB", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY + 1, NULL);
@@ -85,11 +82,6 @@ int main( void ) {
     /* Finally start the scheduler. */
     vTaskStartScheduler();
 
-    /* If all is well, the scheduler will now be running, and the following line
-    will never be reached.  If the following line does execute, then there was
-    insufficient FreeRTOS heap memory available for the idle and/or timer tasks
-    to be created.  See the memory management section on the FreeRTOS web site
-    for more details. */
     for(;; );
 }
 
