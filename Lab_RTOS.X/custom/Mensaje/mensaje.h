@@ -43,7 +43,7 @@
     // *****************************************************************************
     // *****************************************************************************
     
-    void envioMensaje(uint16_t id, struct tm hora, uint8_t pos, uint16_t temp, uint8_t phone);
+    void envioMensaje(uint16_t *id, struct tm hora, uint8_t *pos, uint16_t temp, uint8_t *phone);
 
 
 

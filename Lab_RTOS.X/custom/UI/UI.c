@@ -110,7 +110,6 @@ void UI_menuTask( void* p_param) {
                                 USB_sendS("El ID es:\n");
                                 
                                 USB_sendS(id);
-                                envioMensaje(id,hora,pos,temp,phone);
                             }
                             else {
                                 USB_sendS("Error, intente nuevamente\n");
@@ -267,19 +266,21 @@ void BTN_taskCheck(void *p_param){
             resetButton1(); //se setea el flag en false
             medirtemperatura(umbral1, parpadeo, positivo, negativo, &temp);
             if (!getButton1()) {
-               /* uint16_t redondeado[16];
-                sprintf(redondeado, "%.1d\n", temp);
-                USB_sendS(redondeado);*/
+               uint16_t redondeado[16];
+                sprintf(redondeado, "%.1f\n", temp);
+                USB_sendS(redondeado);
                 vTaskDelay(pdMS_TO_TICKS(40));
                 obtenerUbicacionTiempo(&pos, &hora);
                 prueba.temp = temp;
                 prueba.ubicacion = &pos;
                 prueba.time = mktime(&hora);
                 AddLog(prueba);
+                USB_sendS(redondeado);
                 vTaskDelay(pdMS_TO_TICKS(40));
-                //if(temp > umbral1){
-                    
-               // }
+                if(temp > umbral1){
+                    USB_sendS(redondeado);
+                    envioMensaje(&id,hora,&pos,temp,&phone);
+                }
             }
             else{
                 USB_sendS("Medición cancelada\n");
