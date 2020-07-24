@@ -119,9 +119,6 @@ void medirtemperatura(int umbral, int parpadeo, int positivo, int negativo, uint
     } else {
         prendoAnillo(negativo);
     }
-    uint16_t redondeado[16];
-    sprintf(redondeado, "%.1d\n", total);
-    USB_sendS(redondeado);
     vTaskDelay(pdMS_TO_TICKS(2000));
     apagoAnillo();
     *temp = total;

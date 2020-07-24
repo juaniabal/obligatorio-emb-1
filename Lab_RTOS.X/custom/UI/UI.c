@@ -257,24 +257,36 @@ void UI_menuTask( void* p_param) {
  */
 void BTN_taskCheck(void *p_param){
     logger prueba;
-   
     while(1){
         vTaskDelay(pdMS_TO_TICKS(400));
-        if (getButton1()) { 
+        if (getButton1()) {
+            vTaskDelay(pdMS_TO_TICKS(400));
+            resetButton1();//se setea el flag en false
             medirtemperatura(umbral1, parpadeo, positivo, negativo, &temp);
-            vTaskDelay(pdMS_TO_TICKS(40));
-             uint16_t redondeado[16];
-            sprintf(redondeado, "%.1d\n", temp);
-            USB_sendS(redondeado);
-            obtenerUbicacionTiempo(&pos, &hora);
-            prueba.temp = temp;
-            prueba.ubicacion = &pos;
-            prueba.time = mktime(&hora);
-            AddLog(prueba);
+            if(!getButton1()){
+                uint16_t redondeado[16];
+                sprintf(redondeado, "%.1d\n", temp);
+                USB_sendS(redondeado);
+                vTaskDelay(pdMS_TO_TICKS(40));
+                obtenerUbicacionTiempo(&pos, &hora);
+                prueba.temp = temp;
+                prueba.ubicacion = &pos;
+                prueba.time = mktime(&hora);
+                AddLog(prueba);
+                resetButton1();
+            }
+            else{
+                USB_sendS("Medición cancelada\n");
+            }
             resetButton1();
+            
+            
+
         }  
     }
 }
+
+
 // </editor-fold>
 
 // </editor-fold>
