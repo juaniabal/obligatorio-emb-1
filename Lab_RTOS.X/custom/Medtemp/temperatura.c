@@ -82,7 +82,7 @@ void apagoAnillo() {
  *              negativo: es un numero que indica el color si el numero del
  *          umbral es mayor al del promedio de la temperatura obtenida         
  */
-uint16_t medirtemperatura(int umbral, int parpadeo, int positivo, int negativo) {
+void medirtemperatura(int umbral, int parpadeo, int positivo, int negativo, uint16_t *temp) {
     uint16_t voltaje = 0; 
     float grados = 0;
     int i = 0;
@@ -124,7 +124,7 @@ uint16_t medirtemperatura(int umbral, int parpadeo, int positivo, int negativo) 
     USB_sendS(redondeado);
     vTaskDelay(pdMS_TO_TICKS(2000));
     apagoAnillo();
-    return total;
+    *temp = total;
 }
 
 /* *****************************************************************************

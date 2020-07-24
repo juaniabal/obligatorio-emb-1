@@ -22,6 +22,10 @@
     
     uint8_t pos[200];
     struct tm hora;
+    uint16_t temp;
+    
+    uint8_t phone[50];
+    uint8_t id[10];
 
 
 // </editor-fold>
@@ -46,10 +50,8 @@ void UI_menuTask( void* p_param) {
     uint8_t inputBuffer[50];
     struct tm auxTM;
     bool dataValid;
-    uint8_t id[10];
-    uint8_t phone[50];
     uint8_t umbral[10];
-    logger log;
+    //logger log;
     uint8_t i = 0; 
     uint8_t parp[10];
     uint8_t pos[10];
@@ -67,7 +69,7 @@ void UI_menuTask( void* p_param) {
                     USB_sendS("3_ Setear Umbral\n");
                     USB_sendS("4_ Consultar umbral\n");
                     USB_sendS("5_ Registrar telefono\n");
-                    USB_sendS("6_ Cambiar telefono\n");
+                    USB_sendS("6_ Mostrar número de telefono\n");
                     USB_sendS("7_ Imprimir logs\n");
                     USB_sendS("8_ Borrar logs\n");
                     USB_sendS("9_ Configurar el color de los led en el parpadeo, cuando da positivo y cuando da negativo\n");
@@ -254,14 +256,16 @@ void UI_menuTask( void* p_param) {
  *          
  */
 void BTN_taskCheck(void *p_param){
-    
     logger prueba;
+   
     while(1){
         vTaskDelay(pdMS_TO_TICKS(400));
         if (getButton1()) { 
-            uint16_t temp;
-            temp = medirtemperatura(umbral1, parpadeo, positivo, negativo);
+            medirtemperatura(umbral1, parpadeo, positivo, negativo, &temp);
             vTaskDelay(pdMS_TO_TICKS(40));
+             uint16_t redondeado[16];
+            sprintf(redondeado, "%.1d\n", temp);
+            USB_sendS(redondeado);
             obtenerUbicacionTiempo(&pos, &hora);
             prueba.temp = temp;
             prueba.ubicacion = &pos;

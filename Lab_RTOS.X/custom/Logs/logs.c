@@ -81,6 +81,6 @@ void cleanLog(){
         USB_sendS("Los logs ya se encuentran vacios.\n");
     } else {
         logPosition = 0;
-        USB_sendS("Se han borrado todos los registros.:\n");
+        USB_sendS("Se han borrado todos los registros.\n");
     }
 }

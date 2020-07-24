@@ -5,7 +5,7 @@
     Company Name
 
   @File Name
-    filename.h
+    filename.c
 
   @Summary
     Brief description of the file.
@@ -15,34 +15,37 @@
  */
 /* ************************************************************************** */
 
-#ifndef temper    /* Guard against multiple inclusion */
-#define temper
-
-
 /* ************************************************************************** */
 /* ************************************************************************** */
 /* Section: Included Files                                                    */
 /* ************************************************************************** */
 /* ************************************************************************** */
 
+#include "mensaje.h"
+#include "../../freeRTOS/include/FreeRTOS.h"
+#include "../../mcc_generated_files/rtcc.h"
+#include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
 /* This section lists the other files that are included in this file.
  */
 
 /* TODO:  Include other files here if needed. */
 
 
-/* Provide C++ Compatibility */
-// *****************************************************************************
-// *****************************************************************************
-// Section: Interface Functions
-// *****************************************************************************
-// *****************************************************************************
 
-void prendoAnillo(int color);
-void apagoAnillo();
-void medirtemperatura(int umbral, int parpadeo, int positivo, int negativo, uint16_t *temp);
 
-#endif /* _EXAMPLE_FILE_NAME_H */
+/* ************************************************************************** */
+/* ************************************************************************** */
+// Section: Interface Functions                                               */
+/* ************************************************************************** */
+/* ************************************************************************** */
+
+
+void envioMensaje(){
+    
+}
+
 
 /* *****************************************************************************
  End of File

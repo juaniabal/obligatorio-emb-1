@@ -14,6 +14,7 @@
         <itemPath>custom/buttons/buttons.h</itemPath>
         <itemPath>custom/Logs/logs.h</itemPath>
         <itemPath>custom/UbicacionTiempo/ubitime.h</itemPath>
+        <itemPath>custom/Mensaje/mensaje.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f1" displayName="freeRTOS" projectFiles="true">
         <itemPath>freeRTOS/include/FreeRTOS.h</itemPath>
@@ -103,6 +104,7 @@
         <itemPath>mcc_generated_files/uart1.c</itemPath>
       </logicalFolder>
       <itemPath>main.c</itemPath>
+      <itemPath>custom/Mensaje/mensaje.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -125,7 +127,7 @@
         <platformTool>snap</platformTool>
         <languageToolchain>XC32</languageToolchain>
         <languageToolchainVersion>2.40</languageToolchainVersion>
-        <platform>4</platform>
+        <platform>3</platform>
       </toolsSet>
       <packs>
         <pack name="PIC32MM-GPM-0XX_DFP" vendor="Microchip" version="1.2.31"/>
