@@ -105,7 +105,7 @@
     // *****************************************************************************
     // *****************************************************************************
 
-void obtenerUbicacionTiempo(GPSPosition_t *pos, struct tm *hora);
+void obtenerUbicacionTiempo(uint8_t *link, struct tm *hora);
 
 
 #endif /* _EXAMPLE_FILE_NAME_H */

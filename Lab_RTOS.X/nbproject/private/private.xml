@@ -3,28 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/juani/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/custom/Logs/logs.c</file>
-            <file>file:/Users/juani/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/main.c</file>
-            <file>file:/Users/juani/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/custom/Medtemp/temperatura.c</file>
-            <file>file:/Users/juani/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/freeRTOS/list.c</file>
-            <file>file:/Users/juani/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/custom/GPS/GPS.c</file>
-            <file>file:/Users/juani/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/mcc_generated_files/uart1.c</file>
-            <file>file:/Users/juani/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/custom/Logs/logs.h</file>
-            <file>file:/Users/juani/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/custom/buttons/buttons.c</file>
-            <file>file:/Users/juani/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/custom/UbicacionTiempo/ubitime.h</file>
-            <file>file:/Users/juani/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/custom/USB/USB.c</file>
-            <file>file:/Users/juani/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/custom/UI/UI.h</file>
-            <file>file:/Users/juani/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/custom/UI/UI.c</file>
-            <file>file:/Users/juani/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/freeRTOS/croutine.c</file>
-            <file>file:/Users/juani/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/mcc_generated_files/exceptions.c</file>
-            <file>file:/Users/juani/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/freeRTOS/include/projdefs.h</file>
-            <file>file:/Users/juani/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/custom/SIM808/SIM808.c</file>
-            <file>file:/Users/juani/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/freeRTOS/queue.c</file>
-            <file>file:/Users/juani/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/custom/UbicacionTiempo/ubitime.c</file>
-            <file>file:/Users/juani/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/mcc_generated_files/usb/usb_device_cdc.c</file>
-            <file>file:/Users/juani/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/freeRTOS/tasks.c</file>
-            <file>file:/Users/juani/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/custom/GPS/GPS.h</file>
-            <file>file:/Users/juani/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/custom/LEDsRGB/WS2812.c</file>
+            <file>file:/C:/Users/marti/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/custom/Logs/logs.c</file>
+            <file>file:/C:/Users/marti/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/custom/GPS/GPS.h</file>
+            <file>file:/C:/Users/marti/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/custom/UbicacionTiempo/ubitime.h</file>
+            <file>file:/C:/Users/marti/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/main.c</file>
+            <file>file:/C:/Users/marti/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/custom/UbicacionTiempo/ubitime.c</file>
+            <file>file:/C:/Users/marti/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/custom/UI/UI.c</file>
+            <file>file:/C:/Users/marti/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/custom/GPS/GPS.c</file>
+            <file>file:/C:/Users/marti/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/custom/Logs/logs.h</file>
         </group>
     </open-files>
 </project-private>

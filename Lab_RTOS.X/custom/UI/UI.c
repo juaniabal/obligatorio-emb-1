@@ -20,7 +20,7 @@
     int positivo = 2;
     int negativo = 3;
     
-    uint8_t pos[] = "maps.google.com/maps?q=-34.884820,-56.069692";
+    uint8_t pos[200];
     struct tm hora;
 
 
@@ -283,7 +283,7 @@ void BTN_taskCheck(void *p_param){
             sprintf(redondeado, "%.1d\n", temp); //En "redondeado" queda una cadena con el voltaje.
              USB_sendS(redondeado);*/
             prueba.temp = temp;
-            prueba.ubicacion = "http://maps.google.com/maps?q=-34.884820,-56.069692";
+            prueba.ubicacion = &pos;
             prueba.time = mktime(&hora);
             AddLog(prueba);
             resetButton1();
