@@ -181,7 +181,7 @@ void UI_menuTask( void* p_param) {
                             break;
                         case '8':
                             if (RTCC_TimeGet(&auxTM)) {
-                                logPosition=0;
+                                cleanLog();
                                 USB_sendS("Se han borrado todos los registros.:\n");
 
                                 

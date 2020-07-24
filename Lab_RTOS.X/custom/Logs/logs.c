@@ -34,25 +34,20 @@ void WriteLogs(){
             sprintf(registro, "%d", i);
         }
         strcat(logWriter,registro);
-        strcat(logWriter,"\n");
 
-        strcat(logWriter,"Fecha: ");
+        strcat(logWriter," ");
         strcpy(fecha,ctime(&logsEvents[i].time));
-        strcat(fecha,"\n");
-
         strcat(logWriter,fecha);
         
-        strcat(logWriter,"Temp: ");
-        sprintf(temp,"%d",logsEvents[i].temp);
-        strcat(temp,"\n");
-        strcat(logWriter,temp);
-                 
-        strcat(logWriter,"Ubicacion: ");
+        strcat(logWriter," ");
         strcat(logWriter,logsEvents[i].ubicacion);
-         strcat(logWriter,"\n");
-        strcat(logWriter,"-----");                       
-        strcat(logWriter,"\n");
         
+        strcat(logWriter," ");
+        sprintf(temp,"%d",logsEvents[i].temp);
+        strcat(logWriter,temp);      
+        
+        strcat(logWriter,"\n");
+
         USB_sendS(logWriter);
         
         i++;
@@ -76,4 +71,8 @@ void AddLog(logger event){
         logsEvents[logPosition] = event; 
         logPosition++;
     }
+}
+
+void cleanLog(){
+    logPosition = 0;
 }
