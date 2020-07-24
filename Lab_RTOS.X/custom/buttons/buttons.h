@@ -1,17 +1,15 @@
 /* ************************************************************************** */
-/** Descriptive File Name
+/** buttons
 
   @Company
-    Company Name
+ UCUDAL
 
   @File Name
-    filename.h
+    buttons.h
 
   @Summary
-    Brief description of the file.
+ Se encuentran todas las funciones ligadas a los botones
 
-  @Description
-    Describe the purpose of this file.
  */
 /* ************************************************************************** */
 

@@ -1,4 +1,17 @@
+/* ************************************************************************** */
+/** Descriptive File Name
 
+  @Company
+     UCUDAL
+
+  @File Name
+    logs.h
+
+
+  @Description
+ Contiene las funcionalidades ligadas a los logs
+ */
+/* ************************************************************************** */
 #ifndef LOGS_H    
 #define LOGS_H
 
@@ -16,7 +29,7 @@ typedef struct {//id registro es la posicion
     uint8_t *ubicacion;
     uint16_t temp;//
 } logger;
-//static uint8_t ejemplologsEvents[3];
+
 static logger  logsEvents[LOGS];
 static uint8_t logPosition =0;
 

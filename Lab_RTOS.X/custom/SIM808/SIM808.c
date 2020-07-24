@@ -17,13 +17,13 @@
 /*******************************************************************************/
 /************************* INCLUDED FILES **************************************/
 /*******************************************************************************/
-
+// <editor-fold defaultstate="collapsed" desc="Include Files">
 #include "SIM808.h"
 
 #include "../../mcc_generated_files/pin_manager.h"
 #include "../../mcc_generated_files/uart1.h"
 #include <string.h>
-
+// </editor-fold>
 
 /*******************************************************************************/
 /************************* LOCAL VARIABLES *************************************/
@@ -45,7 +45,7 @@ static uint8_t c_simTxBuffer[SIM808_TX_BUF_SIZE];
 /******************************************************************************/
 /************************* LOCAL FUNCTIONS ************************************/
 /******************************************************************************/
-
+// <editor-fold defaultstate="collapsed" desc="Interface Functions">
 /** 
   @Function
     bool SIM808_powerOn( void ) 
@@ -435,3 +435,4 @@ bool SIM808_validateNMEAFrame( uint8_t *p_frame ){
 
     return( *(index+2)=='1');
 }
+// </editor-fold>

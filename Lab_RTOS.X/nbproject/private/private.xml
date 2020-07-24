@@ -6,14 +6,26 @@
             <file>file:/Users/juani/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/custom/Logs/logs.c</file>
             <file>file:/Users/juani/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/main.c</file>
             <file>file:/Users/juani/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/custom/Medtemp/temperatura.c</file>
+            <file>file:/Users/juani/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/custom/USB/USB.h</file>
+            <file>file:/Users/juani/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/custom/GPS/GPS.c</file>
+            <file>file:/Users/juani/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/custom/LEDsRGB/WS2812.h</file>
+            <file>file:/Users/juani/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/mcc_generated_files/clock.c</file>
+            <file>file:/Users/juani/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/custom/Logs/logs.h</file>
+            <file>file:/Users/juani/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/custom/buttons/buttons.c</file>
+            <file>file:/Users/juani/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/custom/UbicacionTiempo/ubitime.h</file>
+            <file>file:/Users/juani/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/custom/USB/USB.c</file>
+            <file>file:/Users/juani/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/custom/UI/UI.h</file>
+            <file>file:/Users/juani/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/custom/Mensaje/mensaje.h</file>
+            <file>file:/Users/juani/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/custom/UI/UI.c</file>
+            <file>file:/Users/juani/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/custom/Mensaje/mensaje.c</file>
             <file>file:/Users/juani/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/custom/SIM808/SIM808.c</file>
             <file>file:/Users/juani/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/custom/UbicacionTiempo/ubitime.c</file>
-            <file>file:/Users/juani/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/custom/GPS/GPS.c</file>
-            <file>file:/Users/juani/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/mcc_generated_files/clock.c</file>
-            <file>file:/Users/juani/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/custom/USB/USB.c</file>
+            <file>file:/Users/juani/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/custom/SIM808/SIM808.h</file>
+            <file>file:/Users/juani/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/custom/buttons/buttons.h</file>
+            <file>file:/Users/juani/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/custom/GPS/GPS.h</file>
             <file>file:/Users/juani/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/mcc_generated_files/adc1.c</file>
+            <file>file:/Users/juani/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/custom/Medtemp/temperatura.h</file>
             <file>file:/Users/juani/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/custom/LEDsRGB/WS2812.c</file>
-            <file>file:/Users/juani/Documents/GitHub/obligatorio-emb-1/Lab_RTOS.X/custom/UI/UI.c</file>
         </group>
     </open-files>
 </project-private>

@@ -1,17 +1,16 @@
 /* ************************************************************************** */
-/** Descriptive File Name
+/** mensaje
 
   @Company
-    Company Name
+ UCUDAL
 
   @File Name
-    filename.h
+    mensaje.h
 
   @Summary
-    Brief description of the file.
+ Se implementa la funcionalidad que envia un SMS
 
-  @Description
-    Describe the purpose of this file.
+
  */
 /* ************************************************************************** */
 

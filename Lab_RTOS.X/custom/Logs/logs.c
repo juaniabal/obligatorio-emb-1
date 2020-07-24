@@ -1,11 +1,12 @@
+// <editor-fold defaultstate="collapsed" desc="Include Files">
 #include "logs.h"
 #include <stdint.h>
 #include <stdbool.h>
 #include <time.h>
 #include <string.h>
 #include "../../mcc_generated_files/adc1.h"
-
-
+// </editor-fold>
+// <editor-fold defaultstate="collapsed" desc="Interface Functions">
 /**
  * @Function
  *  WriteLogs()
@@ -75,7 +76,18 @@ void AddLog(logger event){
         logPosition++;
     }
 }
-
+/**
+ * @Function
+ *  AddLog(logger event)
+ *
+ * @Summary
+ *   Función que limpia  la lista de eventos de los logs
+ * 
+ * @Remarks
+ *   Los datos no son borrados pero al usuario no le aparecerán en la interfaz
+ *  que se conecta con el usb eventos que haya borrado
+ * 
+ */
 void cleanLog(){
     if(logPosition == 0){
         USB_sendS("Los logs ya se encuentran vacios.\n");
@@ -84,3 +96,4 @@ void cleanLog(){
         USB_sendS("Se han borrado todos los registros.\n");
     }
 }
+// </editor-fold>

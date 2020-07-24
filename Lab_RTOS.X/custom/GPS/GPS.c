@@ -15,13 +15,14 @@
 /*******************************************************************************/    
 /************************* INCLUDED FILES **************************************/    
 /*******************************************************************************/
+// <editor-fold defaultstate="collapsed" desc="Include Files">
 #include "GPS.h"
 #include <string.h>
 #include <math.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
-
+// </editor-fold>
 /*******************************************************************************/    
 /************************* LOCAL VARIABLES *************************************/    
 /*******************************************************************************/     
@@ -30,7 +31,7 @@
 /*******************************************************************************/    
 /************************* INTERFACE FUNCTIONS *********************************/    
 /*******************************************************************************/
-
+// <editor-fold defaultstate="collapsed" desc="Interface Functions">
 /**
     @Function
         void GPS_getPosition( GPSPosition_t* pos, uint8_t *sentence )      
@@ -133,3 +134,4 @@ void GPS_generateGoogleMaps( uint8_t *p_linkDest, GPSPosition_t p_gpsData ){
     sprintf( longitude, "%f", p_gpsData.longitude );
     strcat( p_linkDest, longitude );
 }
+// </editor-fold>

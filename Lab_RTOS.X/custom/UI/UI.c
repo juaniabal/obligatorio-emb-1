@@ -45,6 +45,7 @@
  *   
  *          
  */
+    // <editor-fold defaultstate="collapsed" desc="Interface Functions">
 void UI_menuTask( void* p_param) { 
  // <editor-fold defaultstate="collapsed" desc="variables">
     UI_MENU_STATES s_state_menuTask = UI_MENU_STATE_MAIN;
@@ -292,6 +293,5 @@ void BTN_taskCheck(void *p_param){
 // </editor-fold>
 
 // </editor-fold>
-// </editor-fold>
-// </editor-fold>
+
 
