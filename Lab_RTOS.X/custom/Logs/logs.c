@@ -21,6 +21,9 @@ void WriteLogs(){
     char logWriter[200];
     char fecha[50];
     char temp[12];
+    if(logPosition == 0){
+        USB_sendS("No hay logs registrados.");
+    }
     while(i<logPosition){
          memset(logWriter, 0, sizeof(logWriter) );
          memset(registro, 0, sizeof(registro) );  
@@ -74,5 +77,10 @@ void AddLog(logger event){
 }
 
 void cleanLog(){
-    logPosition = 0;
+    if(logPosition == 0){
+        USB_sendS("Los logs ya se encuentran vacios.\n");
+    } else {
+        logPosition = 0;
+        USB_sendS("Se han borrado todos los registros.:\n");
+    }
 }
