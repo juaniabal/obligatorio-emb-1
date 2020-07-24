@@ -19,7 +19,7 @@ endif
 endif
 
 # Environment
-MKDIR=mkdir -p
+MKDIR=gnumkdir -p
 RM=rm -f 
 MV=mv 
 CP=cp 
@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=custom/LEDsRGB/WS2812.c custom/UI/UI.c custom/USB/USB.c custom/GPS/GPS.c custom/SIM808/SIM808.c custom/Medtemp/temperatura.c custom/buttons/buttons.c custom/Logs/logs.c custom/UbicacionTiempo/ubitime.c freeRTOS/croutine.c freeRTOS/event_groups.c freeRTOS/list.c freeRTOS/queue.c freeRTOS/tasks.c freeRTOS/timers.c freeRTOS/portable/MemMang/heap_4.c freeRTOS/portable/MPLAB/PIC32MM/port.c freeRTOS/portable/MPLAB/PIC32MM/port_asm.S mcc_generated_files/usb/usb_device_events.c mcc_generated_files/usb/usb_device.c mcc_generated_files/usb/usb_descriptors.c mcc_generated_files/usb/usb_device_cdc.c mcc_generated_files/system.c mcc_generated_files/clock.c mcc_generated_files/exceptions.c mcc_generated_files/interrupt_manager.c mcc_generated_files/mcc.c mcc_generated_files/pin_manager.c mcc_generated_files/rtcc.c mcc_generated_files/adc1.c mcc_generated_files/uart1.c main.c custom/Mensaje/mensaje.c
+SOURCEFILES_QUOTED_IF_SPACED=custom/LEDsRGB/WS2812.c custom/UI/UI.c custom/USB/USB.c custom/GPS/GPS.c custom/SIM808/SIM808.c custom/Medtemp/temperatura.c custom/buttons/buttons.c custom/Logs/logs.c custom/UbicacionTiempo/ubitime.c custom/Mensaje/mensaje.c freeRTOS/croutine.c freeRTOS/event_groups.c freeRTOS/list.c freeRTOS/queue.c freeRTOS/tasks.c freeRTOS/timers.c freeRTOS/portable/MemMang/heap_4.c freeRTOS/portable/MPLAB/PIC32MM/port.c freeRTOS/portable/MPLAB/PIC32MM/port_asm.S mcc_generated_files/usb/usb_device_events.c mcc_generated_files/usb/usb_device.c mcc_generated_files/usb/usb_descriptors.c mcc_generated_files/usb/usb_device_cdc.c mcc_generated_files/system.c mcc_generated_files/clock.c mcc_generated_files/exceptions.c mcc_generated_files/interrupt_manager.c mcc_generated_files/mcc.c mcc_generated_files/pin_manager.c mcc_generated_files/rtcc.c mcc_generated_files/adc1.c mcc_generated_files/uart1.c main.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/custom/LEDsRGB/WS2812.o ${OBJECTDIR}/custom/UI/UI.o ${OBJECTDIR}/custom/USB/USB.o ${OBJECTDIR}/custom/GPS/GPS.o ${OBJECTDIR}/custom/SIM808/SIM808.o ${OBJECTDIR}/custom/Medtemp/temperatura.o ${OBJECTDIR}/custom/buttons/buttons.o ${OBJECTDIR}/custom/Logs/logs.o ${OBJECTDIR}/custom/UbicacionTiempo/ubitime.o ${OBJECTDIR}/freeRTOS/croutine.o ${OBJECTDIR}/freeRTOS/event_groups.o ${OBJECTDIR}/freeRTOS/list.o ${OBJECTDIR}/freeRTOS/queue.o ${OBJECTDIR}/freeRTOS/tasks.o ${OBJECTDIR}/freeRTOS/timers.o ${OBJECTDIR}/freeRTOS/portable/MemMang/heap_4.o ${OBJECTDIR}/freeRTOS/portable/MPLAB/PIC32MM/port.o ${OBJECTDIR}/freeRTOS/portable/MPLAB/PIC32MM/port_asm.o ${OBJECTDIR}/mcc_generated_files/usb/usb_device_events.o ${OBJECTDIR}/mcc_generated_files/usb/usb_device.o ${OBJECTDIR}/mcc_generated_files/usb/usb_descriptors.o ${OBJECTDIR}/mcc_generated_files/usb/usb_device_cdc.o ${OBJECTDIR}/mcc_generated_files/system.o ${OBJECTDIR}/mcc_generated_files/clock.o ${OBJECTDIR}/mcc_generated_files/exceptions.o ${OBJECTDIR}/mcc_generated_files/interrupt_manager.o ${OBJECTDIR}/mcc_generated_files/mcc.o ${OBJECTDIR}/mcc_generated_files/pin_manager.o ${OBJECTDIR}/mcc_generated_files/rtcc.o ${OBJECTDIR}/mcc_generated_files/adc1.o ${OBJECTDIR}/mcc_generated_files/uart1.o ${OBJECTDIR}/main.o ${OBJECTDIR}/custom/Mensaje/mensaje.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/custom/LEDsRGB/WS2812.o.d ${OBJECTDIR}/custom/UI/UI.o.d ${OBJECTDIR}/custom/USB/USB.o.d ${OBJECTDIR}/custom/GPS/GPS.o.d ${OBJECTDIR}/custom/SIM808/SIM808.o.d ${OBJECTDIR}/custom/Medtemp/temperatura.o.d ${OBJECTDIR}/custom/buttons/buttons.o.d ${OBJECTDIR}/custom/Logs/logs.o.d ${OBJECTDIR}/custom/UbicacionTiempo/ubitime.o.d ${OBJECTDIR}/freeRTOS/croutine.o.d ${OBJECTDIR}/freeRTOS/event_groups.o.d ${OBJECTDIR}/freeRTOS/list.o.d ${OBJECTDIR}/freeRTOS/queue.o.d ${OBJECTDIR}/freeRTOS/tasks.o.d ${OBJECTDIR}/freeRTOS/timers.o.d ${OBJECTDIR}/freeRTOS/portable/MemMang/heap_4.o.d ${OBJECTDIR}/freeRTOS/portable/MPLAB/PIC32MM/port.o.d ${OBJECTDIR}/freeRTOS/portable/MPLAB/PIC32MM/port_asm.o.d ${OBJECTDIR}/mcc_generated_files/usb/usb_device_events.o.d ${OBJECTDIR}/mcc_generated_files/usb/usb_device.o.d ${OBJECTDIR}/mcc_generated_files/usb/usb_descriptors.o.d ${OBJECTDIR}/mcc_generated_files/usb/usb_device_cdc.o.d ${OBJECTDIR}/mcc_generated_files/system.o.d ${OBJECTDIR}/mcc_generated_files/clock.o.d ${OBJECTDIR}/mcc_generated_files/exceptions.o.d ${OBJECTDIR}/mcc_generated_files/interrupt_manager.o.d ${OBJECTDIR}/mcc_generated_files/mcc.o.d ${OBJECTDIR}/mcc_generated_files/pin_manager.o.d ${OBJECTDIR}/mcc_generated_files/rtcc.o.d ${OBJECTDIR}/mcc_generated_files/adc1.o.d ${OBJECTDIR}/mcc_generated_files/uart1.o.d ${OBJECTDIR}/main.o.d ${OBJECTDIR}/custom/Mensaje/mensaje.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/custom/LEDsRGB/WS2812.o ${OBJECTDIR}/custom/UI/UI.o ${OBJECTDIR}/custom/USB/USB.o ${OBJECTDIR}/custom/GPS/GPS.o ${OBJECTDIR}/custom/SIM808/SIM808.o ${OBJECTDIR}/custom/Medtemp/temperatura.o ${OBJECTDIR}/custom/buttons/buttons.o ${OBJECTDIR}/custom/Logs/logs.o ${OBJECTDIR}/custom/UbicacionTiempo/ubitime.o ${OBJECTDIR}/custom/Mensaje/mensaje.o ${OBJECTDIR}/freeRTOS/croutine.o ${OBJECTDIR}/freeRTOS/event_groups.o ${OBJECTDIR}/freeRTOS/list.o ${OBJECTDIR}/freeRTOS/queue.o ${OBJECTDIR}/freeRTOS/tasks.o ${OBJECTDIR}/freeRTOS/timers.o ${OBJECTDIR}/freeRTOS/portable/MemMang/heap_4.o ${OBJECTDIR}/freeRTOS/portable/MPLAB/PIC32MM/port.o ${OBJECTDIR}/freeRTOS/portable/MPLAB/PIC32MM/port_asm.o ${OBJECTDIR}/mcc_generated_files/usb/usb_device_events.o ${OBJECTDIR}/mcc_generated_files/usb/usb_device.o ${OBJECTDIR}/mcc_generated_files/usb/usb_descriptors.o ${OBJECTDIR}/mcc_generated_files/usb/usb_device_cdc.o ${OBJECTDIR}/mcc_generated_files/system.o ${OBJECTDIR}/mcc_generated_files/clock.o ${OBJECTDIR}/mcc_generated_files/exceptions.o ${OBJECTDIR}/mcc_generated_files/interrupt_manager.o ${OBJECTDIR}/mcc_generated_files/mcc.o ${OBJECTDIR}/mcc_generated_files/pin_manager.o ${OBJECTDIR}/mcc_generated_files/rtcc.o ${OBJECTDIR}/mcc_generated_files/adc1.o ${OBJECTDIR}/mcc_generated_files/uart1.o ${OBJECTDIR}/main.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/custom/LEDsRGB/WS2812.o.d ${OBJECTDIR}/custom/UI/UI.o.d ${OBJECTDIR}/custom/USB/USB.o.d ${OBJECTDIR}/custom/GPS/GPS.o.d ${OBJECTDIR}/custom/SIM808/SIM808.o.d ${OBJECTDIR}/custom/Medtemp/temperatura.o.d ${OBJECTDIR}/custom/buttons/buttons.o.d ${OBJECTDIR}/custom/Logs/logs.o.d ${OBJECTDIR}/custom/UbicacionTiempo/ubitime.o.d ${OBJECTDIR}/custom/Mensaje/mensaje.o.d ${OBJECTDIR}/freeRTOS/croutine.o.d ${OBJECTDIR}/freeRTOS/event_groups.o.d ${OBJECTDIR}/freeRTOS/list.o.d ${OBJECTDIR}/freeRTOS/queue.o.d ${OBJECTDIR}/freeRTOS/tasks.o.d ${OBJECTDIR}/freeRTOS/timers.o.d ${OBJECTDIR}/freeRTOS/portable/MemMang/heap_4.o.d ${OBJECTDIR}/freeRTOS/portable/MPLAB/PIC32MM/port.o.d ${OBJECTDIR}/freeRTOS/portable/MPLAB/PIC32MM/port_asm.o.d ${OBJECTDIR}/mcc_generated_files/usb/usb_device_events.o.d ${OBJECTDIR}/mcc_generated_files/usb/usb_device.o.d ${OBJECTDIR}/mcc_generated_files/usb/usb_descriptors.o.d ${OBJECTDIR}/mcc_generated_files/usb/usb_device_cdc.o.d ${OBJECTDIR}/mcc_generated_files/system.o.d ${OBJECTDIR}/mcc_generated_files/clock.o.d ${OBJECTDIR}/mcc_generated_files/exceptions.o.d ${OBJECTDIR}/mcc_generated_files/interrupt_manager.o.d ${OBJECTDIR}/mcc_generated_files/mcc.o.d ${OBJECTDIR}/mcc_generated_files/pin_manager.o.d ${OBJECTDIR}/mcc_generated_files/rtcc.o.d ${OBJECTDIR}/mcc_generated_files/adc1.o.d ${OBJECTDIR}/mcc_generated_files/uart1.o.d ${OBJECTDIR}/main.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/custom/LEDsRGB/WS2812.o ${OBJECTDIR}/custom/UI/UI.o ${OBJECTDIR}/custom/USB/USB.o ${OBJECTDIR}/custom/GPS/GPS.o ${OBJECTDIR}/custom/SIM808/SIM808.o ${OBJECTDIR}/custom/Medtemp/temperatura.o ${OBJECTDIR}/custom/buttons/buttons.o ${OBJECTDIR}/custom/Logs/logs.o ${OBJECTDIR}/custom/UbicacionTiempo/ubitime.o ${OBJECTDIR}/freeRTOS/croutine.o ${OBJECTDIR}/freeRTOS/event_groups.o ${OBJECTDIR}/freeRTOS/list.o ${OBJECTDIR}/freeRTOS/queue.o ${OBJECTDIR}/freeRTOS/tasks.o ${OBJECTDIR}/freeRTOS/timers.o ${OBJECTDIR}/freeRTOS/portable/MemMang/heap_4.o ${OBJECTDIR}/freeRTOS/portable/MPLAB/PIC32MM/port.o ${OBJECTDIR}/freeRTOS/portable/MPLAB/PIC32MM/port_asm.o ${OBJECTDIR}/mcc_generated_files/usb/usb_device_events.o ${OBJECTDIR}/mcc_generated_files/usb/usb_device.o ${OBJECTDIR}/mcc_generated_files/usb/usb_descriptors.o ${OBJECTDIR}/mcc_generated_files/usb/usb_device_cdc.o ${OBJECTDIR}/mcc_generated_files/system.o ${OBJECTDIR}/mcc_generated_files/clock.o ${OBJECTDIR}/mcc_generated_files/exceptions.o ${OBJECTDIR}/mcc_generated_files/interrupt_manager.o ${OBJECTDIR}/mcc_generated_files/mcc.o ${OBJECTDIR}/mcc_generated_files/pin_manager.o ${OBJECTDIR}/mcc_generated_files/rtcc.o ${OBJECTDIR}/mcc_generated_files/adc1.o ${OBJECTDIR}/mcc_generated_files/uart1.o ${OBJECTDIR}/main.o ${OBJECTDIR}/custom/Mensaje/mensaje.o
+OBJECTFILES=${OBJECTDIR}/custom/LEDsRGB/WS2812.o ${OBJECTDIR}/custom/UI/UI.o ${OBJECTDIR}/custom/USB/USB.o ${OBJECTDIR}/custom/GPS/GPS.o ${OBJECTDIR}/custom/SIM808/SIM808.o ${OBJECTDIR}/custom/Medtemp/temperatura.o ${OBJECTDIR}/custom/buttons/buttons.o ${OBJECTDIR}/custom/Logs/logs.o ${OBJECTDIR}/custom/UbicacionTiempo/ubitime.o ${OBJECTDIR}/custom/Mensaje/mensaje.o ${OBJECTDIR}/freeRTOS/croutine.o ${OBJECTDIR}/freeRTOS/event_groups.o ${OBJECTDIR}/freeRTOS/list.o ${OBJECTDIR}/freeRTOS/queue.o ${OBJECTDIR}/freeRTOS/tasks.o ${OBJECTDIR}/freeRTOS/timers.o ${OBJECTDIR}/freeRTOS/portable/MemMang/heap_4.o ${OBJECTDIR}/freeRTOS/portable/MPLAB/PIC32MM/port.o ${OBJECTDIR}/freeRTOS/portable/MPLAB/PIC32MM/port_asm.o ${OBJECTDIR}/mcc_generated_files/usb/usb_device_events.o ${OBJECTDIR}/mcc_generated_files/usb/usb_device.o ${OBJECTDIR}/mcc_generated_files/usb/usb_descriptors.o ${OBJECTDIR}/mcc_generated_files/usb/usb_device_cdc.o ${OBJECTDIR}/mcc_generated_files/system.o ${OBJECTDIR}/mcc_generated_files/clock.o ${OBJECTDIR}/mcc_generated_files/exceptions.o ${OBJECTDIR}/mcc_generated_files/interrupt_manager.o ${OBJECTDIR}/mcc_generated_files/mcc.o ${OBJECTDIR}/mcc_generated_files/pin_manager.o ${OBJECTDIR}/mcc_generated_files/rtcc.o ${OBJECTDIR}/mcc_generated_files/adc1.o ${OBJECTDIR}/mcc_generated_files/uart1.o ${OBJECTDIR}/main.o
 
 # Source Files
-SOURCEFILES=custom/LEDsRGB/WS2812.c custom/UI/UI.c custom/USB/USB.c custom/GPS/GPS.c custom/SIM808/SIM808.c custom/Medtemp/temperatura.c custom/buttons/buttons.c custom/Logs/logs.c custom/UbicacionTiempo/ubitime.c freeRTOS/croutine.c freeRTOS/event_groups.c freeRTOS/list.c freeRTOS/queue.c freeRTOS/tasks.c freeRTOS/timers.c freeRTOS/portable/MemMang/heap_4.c freeRTOS/portable/MPLAB/PIC32MM/port.c freeRTOS/portable/MPLAB/PIC32MM/port_asm.S mcc_generated_files/usb/usb_device_events.c mcc_generated_files/usb/usb_device.c mcc_generated_files/usb/usb_descriptors.c mcc_generated_files/usb/usb_device_cdc.c mcc_generated_files/system.c mcc_generated_files/clock.c mcc_generated_files/exceptions.c mcc_generated_files/interrupt_manager.c mcc_generated_files/mcc.c mcc_generated_files/pin_manager.c mcc_generated_files/rtcc.c mcc_generated_files/adc1.c mcc_generated_files/uart1.c main.c custom/Mensaje/mensaje.c
+SOURCEFILES=custom/LEDsRGB/WS2812.c custom/UI/UI.c custom/USB/USB.c custom/GPS/GPS.c custom/SIM808/SIM808.c custom/Medtemp/temperatura.c custom/buttons/buttons.c custom/Logs/logs.c custom/UbicacionTiempo/ubitime.c custom/Mensaje/mensaje.c freeRTOS/croutine.c freeRTOS/event_groups.c freeRTOS/list.c freeRTOS/queue.c freeRTOS/tasks.c freeRTOS/timers.c freeRTOS/portable/MemMang/heap_4.c freeRTOS/portable/MPLAB/PIC32MM/port.c freeRTOS/portable/MPLAB/PIC32MM/port_asm.S mcc_generated_files/usb/usb_device_events.c mcc_generated_files/usb/usb_device.c mcc_generated_files/usb/usb_descriptors.c mcc_generated_files/usb/usb_device_cdc.c mcc_generated_files/system.c mcc_generated_files/clock.c mcc_generated_files/exceptions.c mcc_generated_files/interrupt_manager.c mcc_generated_files/mcc.c mcc_generated_files/pin_manager.c mcc_generated_files/rtcc.c mcc_generated_files/adc1.c mcc_generated_files/uart1.c main.c
 
 
 
@@ -174,6 +174,12 @@ ${OBJECTDIR}/custom/UbicacionTiempo/ubitime.o: custom/UbicacionTiempo/ubitime.c 
 	@${RM} ${OBJECTDIR}/custom/UbicacionTiempo/ubitime.o.d 
 	@${RM} ${OBJECTDIR}/custom/UbicacionTiempo/ubitime.o 
 	@${FIXDEPS} "${OBJECTDIR}/custom/UbicacionTiempo/ubitime.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"freeRTOS/include" -I"freeRTOS/portable/MPLAB/PIC32MM" -MMD -MF "${OBJECTDIR}/custom/UbicacionTiempo/ubitime.o.d" -o ${OBJECTDIR}/custom/UbicacionTiempo/ubitime.o custom/UbicacionTiempo/ubitime.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -I freeRTOS/include -I freeRTOS/portable/MPLAB/PIC32MM -I .. -mdfp=${DFP_DIR}  
+	
+${OBJECTDIR}/custom/Mensaje/mensaje.o: custom/Mensaje/mensaje.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/custom/Mensaje" 
+	@${RM} ${OBJECTDIR}/custom/Mensaje/mensaje.o.d 
+	@${RM} ${OBJECTDIR}/custom/Mensaje/mensaje.o 
+	@${FIXDEPS} "${OBJECTDIR}/custom/Mensaje/mensaje.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"freeRTOS/include" -I"freeRTOS/portable/MPLAB/PIC32MM" -MMD -MF "${OBJECTDIR}/custom/Mensaje/mensaje.o.d" -o ${OBJECTDIR}/custom/Mensaje/mensaje.o custom/Mensaje/mensaje.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -I freeRTOS/include -I freeRTOS/portable/MPLAB/PIC32MM -I .. -mdfp=${DFP_DIR}  
 	
 ${OBJECTDIR}/freeRTOS/croutine.o: freeRTOS/croutine.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/freeRTOS" 
@@ -307,12 +313,6 @@ ${OBJECTDIR}/main.o: main.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/main.o 
 	@${FIXDEPS} "${OBJECTDIR}/main.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"freeRTOS/include" -I"freeRTOS/portable/MPLAB/PIC32MM" -MMD -MF "${OBJECTDIR}/main.o.d" -o ${OBJECTDIR}/main.o main.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -I freeRTOS/include -I freeRTOS/portable/MPLAB/PIC32MM -I .. -mdfp=${DFP_DIR}  
 	
-${OBJECTDIR}/custom/Mensaje/mensaje.o: custom/Mensaje/mensaje.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/custom/Mensaje" 
-	@${RM} ${OBJECTDIR}/custom/Mensaje/mensaje.o.d 
-	@${RM} ${OBJECTDIR}/custom/Mensaje/mensaje.o 
-	@${FIXDEPS} "${OBJECTDIR}/custom/Mensaje/mensaje.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"freeRTOS/include" -I"freeRTOS/portable/MPLAB/PIC32MM" -MMD -MF "${OBJECTDIR}/custom/Mensaje/mensaje.o.d" -o ${OBJECTDIR}/custom/Mensaje/mensaje.o custom/Mensaje/mensaje.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -I freeRTOS/include -I freeRTOS/portable/MPLAB/PIC32MM -I .. -mdfp=${DFP_DIR}  
-	
 else
 ${OBJECTDIR}/custom/LEDsRGB/WS2812.o: custom/LEDsRGB/WS2812.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/custom/LEDsRGB" 
@@ -367,6 +367,12 @@ ${OBJECTDIR}/custom/UbicacionTiempo/ubitime.o: custom/UbicacionTiempo/ubitime.c 
 	@${RM} ${OBJECTDIR}/custom/UbicacionTiempo/ubitime.o.d 
 	@${RM} ${OBJECTDIR}/custom/UbicacionTiempo/ubitime.o 
 	@${FIXDEPS} "${OBJECTDIR}/custom/UbicacionTiempo/ubitime.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"freeRTOS/include" -I"freeRTOS/portable/MPLAB/PIC32MM" -MMD -MF "${OBJECTDIR}/custom/UbicacionTiempo/ubitime.o.d" -o ${OBJECTDIR}/custom/UbicacionTiempo/ubitime.o custom/UbicacionTiempo/ubitime.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -I freeRTOS/include -I freeRTOS/portable/MPLAB/PIC32MM -I .. -mdfp=${DFP_DIR}  
+	
+${OBJECTDIR}/custom/Mensaje/mensaje.o: custom/Mensaje/mensaje.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/custom/Mensaje" 
+	@${RM} ${OBJECTDIR}/custom/Mensaje/mensaje.o.d 
+	@${RM} ${OBJECTDIR}/custom/Mensaje/mensaje.o 
+	@${FIXDEPS} "${OBJECTDIR}/custom/Mensaje/mensaje.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"freeRTOS/include" -I"freeRTOS/portable/MPLAB/PIC32MM" -MMD -MF "${OBJECTDIR}/custom/Mensaje/mensaje.o.d" -o ${OBJECTDIR}/custom/Mensaje/mensaje.o custom/Mensaje/mensaje.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -I freeRTOS/include -I freeRTOS/portable/MPLAB/PIC32MM -I .. -mdfp=${DFP_DIR}  
 	
 ${OBJECTDIR}/freeRTOS/croutine.o: freeRTOS/croutine.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/freeRTOS" 
@@ -500,12 +506,6 @@ ${OBJECTDIR}/main.o: main.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/main.o 
 	@${FIXDEPS} "${OBJECTDIR}/main.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"freeRTOS/include" -I"freeRTOS/portable/MPLAB/PIC32MM" -MMD -MF "${OBJECTDIR}/main.o.d" -o ${OBJECTDIR}/main.o main.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -I freeRTOS/include -I freeRTOS/portable/MPLAB/PIC32MM -I .. -mdfp=${DFP_DIR}  
 	
-${OBJECTDIR}/custom/Mensaje/mensaje.o: custom/Mensaje/mensaje.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/custom/Mensaje" 
-	@${RM} ${OBJECTDIR}/custom/Mensaje/mensaje.o.d 
-	@${RM} ${OBJECTDIR}/custom/Mensaje/mensaje.o 
-	@${FIXDEPS} "${OBJECTDIR}/custom/Mensaje/mensaje.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"freeRTOS/include" -I"freeRTOS/portable/MPLAB/PIC32MM" -MMD -MF "${OBJECTDIR}/custom/Mensaje/mensaje.o.d" -o ${OBJECTDIR}/custom/Mensaje/mensaje.o custom/Mensaje/mensaje.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -I freeRTOS/include -I freeRTOS/portable/MPLAB/PIC32MM -I .. -mdfp=${DFP_DIR}  
-	
 endif
 
 # ------------------------------------------------------------------------------------
@@ -525,7 +525,7 @@ else
 dist/${CND_CONF}/${IMAGE_TYPE}/Lab_RTOS.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   
 	@${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
 	${MP_CC} $(MP_EXTRA_LD_PRE)  -mprocessor=$(MP_PROCESSOR_OPTION)  -o dist/${CND_CONF}/${IMAGE_TYPE}/Lab_RTOS.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}          -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION),--defsym=_min_heap_size=2048,--no-code-in-dinit,--no-dinit-in-serial-mem,-Map="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map",--memorysummary,dist/${CND_CONF}/${IMAGE_TYPE}/memoryfile.xml -mdfp=${DFP_DIR}
-	${MP_CC_DIR}/xc32-bin2hex dist/${CND_CONF}/${IMAGE_TYPE}/Lab_RTOS.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} 
+	${MP_CC_DIR}\\xc32-bin2hex dist/${CND_CONF}/${IMAGE_TYPE}/Lab_RTOS.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} 
 endif
 
 
@@ -544,7 +544,7 @@ endif
 # Enable dependency checking
 .dep.inc: .depcheck-impl
 
-DEPFILES=$(shell "${PATH_TO_IDE_BIN}"mplabwildcard ${POSSIBLE_DEPFILES})
+DEPFILES=$(shell mplabwildcard ${POSSIBLE_DEPFILES})
 ifneq (${DEPFILES},)
 include ${DEPFILES}
 endif

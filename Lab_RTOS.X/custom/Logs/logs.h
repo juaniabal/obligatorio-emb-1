@@ -22,7 +22,7 @@
 #include "../GPS/GPS.h"
 #include <inttypes.h>
 
-#define LOGS 5
+#define LOGS 200
 
 typedef struct {//id registro es la posicion
     time_t time;

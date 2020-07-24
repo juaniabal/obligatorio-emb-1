@@ -267,9 +267,9 @@ void BTN_taskCheck(void *p_param){
             resetButton1(); //se setea el flag en false
             medirtemperatura(umbral1, parpadeo, positivo, negativo, &temp);
             if (!getButton1()) {
-                uint16_t redondeado[16];
+               /* uint16_t redondeado[16];
                 sprintf(redondeado, "%.1d\n", temp);
-                USB_sendS(redondeado);
+                USB_sendS(redondeado);*/
                 vTaskDelay(pdMS_TO_TICKS(40));
                 obtenerUbicacionTiempo(&pos, &hora);
                 prueba.temp = temp;
