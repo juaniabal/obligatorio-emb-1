@@ -2,16 +2,14 @@
 /** Descriptive File Name
 
   @Company
-    Company Name
+     UCUDAL
 
   @File Name
-    filename.h
+    ubitime.h
 
-  @Summary
-    Brief description of the file.
 
   @Description
-    Describe the purpose of this file.
+ Contiene las funcionalidades que devuelven la ubicacion y tiempo de la placa
  */
 /* ************************************************************************** */
 
