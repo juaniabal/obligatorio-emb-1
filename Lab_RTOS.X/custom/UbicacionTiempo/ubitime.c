@@ -65,7 +65,7 @@ void obtenerUbicacionTiempo(uint8_t *link, struct tm *hora) {
         verifica = SIM808_validateNMEAFrame(gpss);
         USB_sendS(gpss);
     }*/
-    GPS_getPosition(&pos, gpss);
+    GPS_getPosition(&pos, &gpss[0]);
     GPS_getUTC(hora, gpss);
     GPS_generateGoogleMaps(link,pos);
 }
