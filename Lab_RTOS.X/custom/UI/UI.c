@@ -23,7 +23,7 @@
     
     uint8_t pos[200];
     struct tm hora;
-    uint16_t temp;
+    float temp;
     
     uint8_t phone[50] = "098765432";
     uint8_t id[10] = "1234";

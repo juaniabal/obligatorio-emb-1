@@ -40,7 +40,7 @@
 
 void prendoAnillo(int color);
 void apagoAnillo();
-void medirtemperatura(int umbral, int parpadeo, int positivo, int negativo, uint16_t *temp);
+void medirtemperatura(int umbral, int parpadeo, int positivo, int negativo, float *temp);
 
 #endif /* _EXAMPLE_FILE_NAME_H */
 

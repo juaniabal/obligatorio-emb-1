@@ -27,7 +27,7 @@
 typedef struct {//id registro es la posicion
     time_t time;
     uint8_t *ubicacion;
-    uint16_t temp;//
+    float temp;//
 } logger;
 
 static logger  logsEvents[LOGS];

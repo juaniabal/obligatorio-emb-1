@@ -82,11 +82,12 @@ void apagoAnillo() {
  *              negativo: es un numero que indica el color si el numero del
  *          umbral es mayor al del promedio de la temperatura obtenida         
  */
-void medirtemperatura(int umbral, int parpadeo, int positivo, int negativo, uint16_t *temp) {
+void medirtemperatura(int umbral, int parpadeo, int positivo, int negativo, float *temp) {
     uint16_t voltaje = 0; 
     float grados = 0;
     int i = 0;
-    uint16_t total = 0;
+    float total = 0;
+    float final;
     for (i = 0; i < 5; i++) {
         ADC1_ChannelSelect(TempVol);
         ADC1_SoftwareTriggerEnable();
@@ -111,9 +112,11 @@ void medirtemperatura(int umbral, int parpadeo, int positivo, int negativo, uint
         grados = (32 + (voltaje * 0.00977517106));
         total += grados;
     }
-    total = total / 10;
-    vTaskDelay(pdMS_TO_TICKS(100));
-    //USB_sendS(redondeado);
+    final = total / 10;
+    uint16_t redondeado[16];
+    sprintf(redondeado, "%.1f\n", final);
+    USB_sendS(redondeado);
+    vTaskDelay(pdMS_TO_TICKS(50));
     if (total >= umbral) {
         prendoAnillo(positivo);
     } else {
@@ -121,7 +124,7 @@ void medirtemperatura(int umbral, int parpadeo, int positivo, int negativo, uint
     }
     vTaskDelay(pdMS_TO_TICKS(2000));
     apagoAnillo();
-    *temp = total;
+    *temp = final;
 }
 // </editor-fold>
 /* *****************************************************************************

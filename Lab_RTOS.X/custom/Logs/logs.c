@@ -21,7 +21,7 @@ void WriteLogs(){
     char registro[2];
     char logWriter[200];
     char fecha[50];
-    char temp[12];
+    char temp[40];
     if(logPosition == 0){
         USB_sendS("No hay logs registrados.");
     }
@@ -47,7 +47,7 @@ void WriteLogs(){
         strcat(logWriter,logsEvents[i].ubicacion);
         
         strcat(logWriter," ");
-        sprintf(temp,"%d",logsEvents[i].temp);
+        sprintf(temp,"%.1f",logsEvents[i].temp);
         strcat(logWriter,temp);      
         
         strcat(logWriter,"\n");
