@@ -13,12 +13,17 @@
 void obtenerUbicacionTiempo(uint8_t *link, struct tm *hora) {
     bool verifica = false;
     uint8_t gpss[] =  "+CGNSINF: 1,1,20210714222033.000,-34.884820,-56.069692,33.800,0.15,196.6,1,,2.5,2.7,1.0,,10,4,,,4,,";
+    //uint8_t gpss[100];
+    int8_t dev;
     GPSPosition_t pos;
     /*
     while (verifica != true) {
-        SIM808_getNMEA(gpss);
+        dev = SIM808_getNMEA(gpss);
         vTaskDelay(pdMS_TO_TICKS(100));
-        verifica = SIM808_validateNMEAFrame(gpss);
+        if(dev == true){
+            verifica = SIM808_validateNMEAFrame(gpss);
+        }
+               
         USB_sendS(gpss);
     }*/
     GPS_getPosition(&pos, &gpss[0]);

@@ -53,7 +53,6 @@ void envioMensaje(uint16_t *id, struct tm hora, uint8_t *pos, uint16_t temp, uin
     memset(logWriter, 0, sizeof (logWriter));
 
     strcat(logWriter, id);
-    USB_sendS(logWriter);
     strcat(logWriter, " ");
     strcpy(fecha, ctime(&hour));
     strcat(logWriter, fecha);
@@ -62,22 +61,16 @@ void envioMensaje(uint16_t *id, struct tm hora, uint8_t *pos, uint16_t temp, uin
     strcat(logWriter, " ");
     sprintf(temp1, "%d", temp);
     strcat(logWriter, temp1);
-    USB_sendS(logWriter);// Hasta aca se arma la cadena a enviar
+   // USB_sendS(logWriter);// Hasta aca se arma la cadena a enviar
     
     
     memset(numero, 0, sizeof (numero));
     strcat(numero, "\"");
     strcat(numero, phone);
     strcat(numero, "\"");
-    USB_sendS(numero);// Solucionamos las comillas para el numero
+    //USB_sendS(numero);// Solucionamos las comillas para el numero
     
-    /*res = SIM808_sendSMS(numero, logWriter);
-    if(res == 1){
-        USB_sendS("se envio");
-    }
-    else{
-        USB_sendS("no envio");
-    }*/  
+    res = SIM808_sendSMS(numero, logWriter);
 }
 
 
